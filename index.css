@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
 * {
   margin: 0;
   padding: 0;
-  font-family: IBM Plex Sans
+  font-family: IBM Plex Sans;
+}
+html {
+  scroll-behavior: smooth;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -10,12 +13,19 @@ body::-webkit-scrollbar {
 .hero {
   background-size: cover;
   height: 100vh;
+  background-color: black;
+  color: white;
 }
 .hero-header {
   height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+/* remove native element for a tag */
+a {
+  text-decoration: none;
+  color: white;
 }
 .hero-header-inner {
   display: flex;
@@ -35,9 +45,10 @@ body::-webkit-scrollbar {
   max-width: 150px;
 }
 .hero-header_nav {
-  width: 70%;
+  width: 60%;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 .hero-body {
   width: 100%;
@@ -62,8 +73,34 @@ body::-webkit-scrollbar {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 60%;
+  width: 45%;
 }
+.gif-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.hero-image-gif {
+  width: 40%;
+  /* background-color: black; */
+}
+.why-hero-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 45%;
+}
+.what-hero-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 55%;
+  z-index: -1;
+  opacity: 0.5;
+}
+
 .app-image {
   width: 140px;
 }
@@ -99,12 +136,13 @@ body::-webkit-scrollbar {
   height: 60px;
 }
 .why-section {
-  background-color: black;
+  background-color: white;
   width: 100%;
   height: 90vh;
-  color: white;
+  color: black;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .why-section-inner {
   width: 95%;
@@ -133,7 +171,7 @@ body::-webkit-scrollbar {
 .why1-icon_img {
   width: 60px;
   height: 60px;
-  background: #FAF8FC;
+  background: #faf8fc;
   border-radius: 8px;
   display: flex;
   justify-content: center;
@@ -175,9 +213,10 @@ body::-webkit-scrollbar {
   height: 90%;
   width: 60%;
   position: relative;
+  color: white;
 }
 .why2-payment-icon {
-  background: #FAF8FC;
+  background: #faf8fc;
   border-radius: 24px;
   width: 100px;
   height: 70px;
@@ -222,6 +261,9 @@ body::-webkit-scrollbar {
   width: 100%;
   height: 100vh;
   display: flex;
+  position: relative;
+  background-color: black;
+  color: white;
 }
 .what1 {
   width: 50%;
@@ -291,11 +333,12 @@ body::-webkit-scrollbar {
   width: 100%;
   height: 100vh;
   display: flex;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .product-section-inner {
   width: 95%;
@@ -324,7 +367,7 @@ body::-webkit-scrollbar {
   position: relative;
 }
 .psb {
-  background: #FAF8FC;
+  background: #faf8fc;
   border-radius: 40px;
   width: 200px;
   height: 200px;
@@ -383,6 +426,9 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  background: black;
+  color: white;
 }
 .manage-section-inner {
   width: 95%;
@@ -452,7 +498,7 @@ body::-webkit-scrollbar {
 .app-section {
   width: 100%;
   height: 75vh;
-  background-color: #F0EEF2;
+  background-color: #f0eef2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -484,8 +530,8 @@ body::-webkit-scrollbar {
 .footer-section {
   width: 100%;
   height: 40vh;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   display: flex;
 }
 .footer-side1 {
@@ -526,16 +572,16 @@ body::-webkit-scrollbar {
   display: none;
 }
 @media only screen and (max-width: 1024px) {
- .ld {
-  display: none;
- }
- .md-sd {
-  display: block;
- }
+  .ld {
+    display: none;
+  }
+  .md-sd {
+    display: block;
+  }
 }
 .footer-md {
-  background-color: #111111;
-  color: white;
+  background-color: white;
+  color: black;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -544,7 +590,6 @@ body::-webkit-scrollbar {
   padding-top: 30px;
   padding-bottom: 30px;
   width: 90%;
-  
 }
 
 .footer-bar-md {
@@ -567,7 +612,7 @@ body::-webkit-scrollbar {
   padding-top: 6px;
 }
 .get-md {
-  background-color: #F0EEF2;
+  background-color: #f0eef2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -609,6 +654,9 @@ body::-webkit-scrollbar {
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
+  background-color: black;
+  color: white;
 }
 .manage-inner-md {
   width: 90%;
@@ -674,17 +722,19 @@ body::-webkit-scrollbar {
   padding-top: 2px;
 }
 .product-md {
-  background-color: #111111;
-  color: white;
+  background-color: white;
+  color: black;
   width: 100%;
   display: flex;
   justify-content: center;
   min-height: 100vh;
+  padding-bottom: 40px;
 }
 .product-inner-md {
   width: 90%;
-  padding-top: 10px;
+  padding-top: 40px;
   padding-bottom: 30px;
+  position: relative;
 }
 .product-section-md {
   width: 100%;
@@ -692,7 +742,7 @@ body::-webkit-scrollbar {
   margin-top: 50px;
 }
 .psb-md {
-  background: #FAF8FC;
+  background: #faf8fc;
   border-radius: 25px;
   width: 155px;
   height: 160px;
@@ -759,6 +809,9 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   text-align: end;
+  position: relative;
+  background-color: black;
+  color: white;
 }
 .what-inner-md {
   width: 90%;
@@ -776,19 +829,20 @@ body::-webkit-scrollbar {
 .what-inner-md .what1-img-2 {
   left: 40%;
   width: 55%;
-  top: 55%
+  top: 55%;
 }
 .what-inner-md .what1-img-3 {
   top: 82%;
   width: 60%;
-} 
+}
 .why-md {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: #111111;
-  color: white;
+  background-color: white;
+  color: black;
   padding-bottom: 60px;
+  position: relative;
 }
 .why-inner-md {
   width: 90%;
@@ -809,7 +863,7 @@ body::-webkit-scrollbar {
   margin-top: 30px;
 }
 .why-icon-img-md {
-  background: #FAF8FC;
+  background: #faf8fc;
   border-radius: 3.9619px;
   width: 40px;
   height: 40px;
@@ -838,7 +892,7 @@ body::-webkit-scrollbar {
 }
 .why2-payment-image-md {
   width: 80%;
-  height: 100%
+  height: 100%;
 }
 .why-card-side1-md {
   width: 50%;
@@ -853,16 +907,16 @@ body::-webkit-scrollbar {
 .why-icon-md p {
   font-size: 12px;
   width: 80%;
-  margin-top: 10px;  
+  margin-top: 10px;
 }
 .why-icon-md h3 {
   font-size: 16px;
   width: 80%;
-  margin-top: 10px;  
+  margin-top: 10px;
 }
 .why-card-text p {
   font-size: 12px;
-  margin-top: 10px;  
+  margin-top: 10px;
 }
 .why-card-side2-md .third {
   background: #111111;
@@ -873,9 +927,232 @@ body::-webkit-scrollbar {
   right: 40%;
 }
 .why-card-side1-md .first {
-  top: 45%
+  top: 45%;
 }
 .why-card-side1-md .second {
   top: 75%;
   left: 40%;
+}
+.hero-md {
+  min-height: 110vh;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+}
+.hero-md-inner {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5vh;
+}
+.hero-md-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+.logo-md {
+  width: 160px;
+  height: 50px;
+  visibility: hidden;
+}
+.hero-md-app-download-img-google {
+  width: 150px;
+  height: 50px;
+}
+.hero-md-app-download-img-apple {
+  width: 150px;
+  height: 50px;
+}
+.hero-md-text-title {
+  font-size: 44px;
+  font-weight: bold;
+}
+.hero-md-text-sub-title {
+  margin-top: 30px;
+  font-size: 18px;
+}
+.hero-md-rating {
+  display: flex;
+  margin-top: 30px;
+}
+.hero-md-app-download {
+  margin-top: 20px;
+}
+.hero-md-image {
+  position: absolute;
+  bottom: -10vh;
+  right: 0;
+  width: 100%;
+}
+.why-circle-md-image {
+  position: absolute;
+  bottom: 0vh;
+  right: 0;
+  width: 100%;
+}
+.what-circle-md-image {
+  position: absolute;
+  bottom: 65vh;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  z-index: -1;
+  opacity: 0.5;
+}
+.hero-md-nav-line {
+  width: 40px;
+  height: 40px;
+}
+.product-md-star {
+  position: absolute;
+}
+.product-inner-md .first-star {
+  top: 3%;
+  height: 40px;
+}
+.product-inner-md .second-star {
+  top: 10%;
+  left: 90%;
+  height: 25px;
+}
+.product-inner-md .third-star {
+  top: 59%;
+  left: 32%;
+  height: 40px;
+}
+.product-inner-md .fourth-star {
+  top: 85%;
+  left: 60%;
+  height: 40px;
+}
+.product-inner-md .fifth-star {
+  top: 95%;
+  left: 20%;
+  height: 25px;
+}
+.manage-circle-md-image {
+  position: absolute;
+  bottom: 90vh;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  z-index: -1;
+  opacity: 0.5;
+}
+.header-cta {
+  width: 150px;
+  height: 40px;
+  background-color: #004cb0;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.product-section .first-star {
+  top: 20%;
+  height: 40px;
+  left: 2.5%;
+}
+.product-section .second-star {
+  top: 30%;
+  left: 40%;
+  height: 25px;
+}
+.product-section .third-star {
+  top: 80%;
+  left: 22%;
+  height: 20px;
+}
+.product-section .fourth-star {
+  top: 9%;
+  left: 72%;
+  height: 20px;
+}
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+.nav {
+  width: 90%;
+  max-width: 350px;
+  height: 350px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-inner {
+  width: 90%;
+  height: 100%;
+}
+.modal-text-1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}
+.modal-image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-image-src {
+  width: 60%;
+}
+.modal-cta-main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-cta {
+  background-color: white;
+  color: black;
+  width: 50%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+.nav-modal-inner {
+  height: 100%;
+  padding-top: 150px;
+}
+.nav-modal-child {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 20px;
 }

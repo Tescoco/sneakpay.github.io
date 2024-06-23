@@ -6,26 +6,55 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>GoodAngel</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="index.css" />
+    <meta name="description" content="GoodAngel" />
+    <meta
+      name="keywords"
+      content="GoodAngel, AI Avatar, Digital Twin, 3D Avatar, AI Technology, Personalization, Facial Recognition, Voice Synthesis, Text-to-Image, Scripted Animations, Secure Identity, Globality, Integration"
+    />
   </head>
   <body>
+    <div onclick="closeModalNav()" id="myNavModal" class="nav-modal">
+      <div id="myNavModal" class="nav-modal-inner">
+        <p class="nav-modal-child"><a href="#about">About Us</a></p>
+        <p class="nav-modal-child"><a href="#what">What We Offer</a></p>
+        <p class="nav-modal-child">
+          <a href="#product">Why Our Product</a>
+        </p>
+        <p class="nav-modal-child"><a href="#footer">Contact Us</a></p>
+        <div class="header-cta">
+          <p>
+            <a style="color: white" href="/waitlist">Demo</a>
+          </p>
+        </div>
+      </div>
+    </div>
     <section class="ld">
       <section class="hero">
         <div class="hero-header">
           <div class="hero-header-inner">
             <div class="hero-header_logo">
-              <!-- <img class="logo" src="/img/logo.png" alt="GoodAngel" /> -->
+              <!-- <img class="logo" src="/img/logo.png" alt="Sneak Pay" /> -->
             </div>
             <div class="hero-header_nav">
-              <p href="#">About Us</p>
-              <p href="#">What We Offer</p>
-              <p href="#">Why Our Product</p>
-              <p href="#">Contact Us</p>
-              <p href="#">Get a demo</p>
+              <p><a href="#about">About Us</a></p>
+              <p><a href="#what">What We Offer</a></p>
+              <p>
+                <a href="#product">Why Our Product</a>
+              </p>
+              <p><a href="#footer">Contact Us</a></p>
+              <div class="header-cta">
+                <p>
+                  <a style="color: white" href="/waitlist">Demo</a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -61,12 +90,21 @@
                 />
               </div>
             </div>
-            <img class="hero-image-sd" src="/img/phone.png" alt="GoodAngel" />
+            <div class="gif-container">
+              <img
+                class="hero-image-gif"
+                src="/img/loading.gif"
+                alt="Sneak Pay"
+              />
+            </div>
+            <!-- <img class="hero-image-sd" src="/img/phone.png" alt="Sneak Pay" /> -->
           </div>
-          <img class="hero-image" src="/img/phone.png" alt="GoodAngel" />
+          <img class="hero-image" src="/img/circle-hero.png" alt="hero-img" />
+          <!-- <img class="hero-image-gif" src="/img/loading.gif" alt="Sneak Pay" /> -->
         </div>
       </section>
-      <section class="why-section">
+
+      <section id="about" class="why-section">
         <div class="why-section-inner">
           <div class="why1">
             <h1 class="why1-title">
@@ -129,8 +167,9 @@
             </div>
           </div>
         </div>
+        <img class="why-hero-image" src="/img/circle-hero.png" alt="hero-img" />
       </section>
-      <section class="what-section">
+      <section id="what" class="what-section">
         <div class="what1">
           <img class="what1-img-1" src="/img/what1.png" alt="what1" />
           <img class="what1-img-2" src="/img/what2.png" alt="what2" />
@@ -166,7 +205,7 @@
                 </div>
                 <img src="/img/what-star.png" class="what-star" />
               </div>
-              <div class="what-info third">
+              <div class="what-info second">
                 <div class="what-info-inner">
                   <h3>Secure Identity</h3>
                   <p>
@@ -178,9 +217,24 @@
                 </div>
                 <img src="/img/what-star.png" class="what-star" />
               </div>
+              <div class="what-info third">
+                <div class="what-info-inner">
+                  <h3>All ATM cards in one place</h3>
+                  <p>
+                    Keep all physical and virtual cards in one place. Save time
+                    and focus on what matters
+                  </p>
+                </div>
+                <img src="/img/what-star.png" class="what-star" />
+              </div>
             </div>
           </div>
         </div>
+        <img
+          class="what-hero-image"
+          src="/img/circle-hero.png"
+          alt="hero-img"
+        />
       </section>
       <section class="product-section">
         <div class="product-section-inner">
@@ -256,8 +310,8 @@
           </div>
           <div class="manage2">
             <h2>
-              Create Your Digital Twin <br />
-              In Just Minutes
+              Start Managing Your Finance <br />
+              In Few Minutes
             </h2>
             <div class="manage2-adv">
               <div class="manage2-adv-inner">
@@ -268,10 +322,10 @@
                       <div class="mab-side1-line"></div>
                     </div>
                     <div class="mab-side2">
-                      <h3>Verify Your Identity</h3>
+                      <h3>Create an account</h3>
                       <p>
-                        Upload your government ID and take a real-time selfie
-                        for secure facial recognition and identity verification.
+                        Sign up for an account with just your name, email and
+                        phone number
                       </p>
                     </div>
                   </div>
@@ -283,10 +337,10 @@
                       <div class="mab-side1-line"></div>
                     </div>
                     <div class="mab-side2">
-                      <h3>Create Your Avatar</h3>
+                      <h3>Add new card</h3>
                       <p>
-                        Provide a voice sample and customize your digital twin
-                        with advanced AI tools for a lifelike representation.
+                        Add any card that you wish use anytime and anywhere, you
+                        can add virtual card too
                       </p>
                     </div>
                   </div>
@@ -297,11 +351,10 @@
                       <div class="mab-side1-no">03</div>
                     </div>
                     <div class="mab-side2">
-                      <h3>Animate and Share</h3>
+                      <h3>Make payment & transfer</h3>
                       <p>
-                        Use text-to-image and script functionalities to bring
-                        your avatar to life in immersive scenes and videos,
-                        ready to share with the world.
+                        You can now manage all your accounts and make payments
+                        with ease
                       </p>
                     </div>
                   </div>
@@ -310,8 +363,13 @@
             </div>
           </div>
         </div>
+        <img
+          class="what-hero-image"
+          src="/img/circle-hero.png"
+          alt="hero-img"
+        />
       </section>
-      <section class="app-section">
+      <section id="app-section" class="app-section">
         <div class="app-section-inner">
           <h1>Get GoodAngel App on Google Play or App Store</h1>
           <p>
@@ -328,7 +386,7 @@
           </div>
         </div>
       </section>
-      <section class="footer-section">
+      <section id="footer" class="footer-section">
         <div class="footer-side1">
           <!-- <img src="/img/logo-white.png" alt="logo" /> -->
           <div class="footer-side1-text">
@@ -342,14 +400,15 @@
           <div class="footer-bar">
             <p class="footer-header-text">Links</p>
             <p>About Us</p>
+            <p>What We Offer</p>
             <p>Why Our Product</p>
             <p>Contact Us</p>
           </div>
           <div class="footer-bar">
             <p class="footer-header-text">Support</p>
             <p>FAQs</p>
-            <p>Help Centre</p>
-            <p>Security</p>
+            <p>Instant Support</p>
+            <p>Docs</p>
           </div>
           <div class="footer-bar">
             <p class="footer-header-text">Legal</p>
@@ -361,7 +420,57 @@
       </section>
     </section>
     <section class="md-sd">
-      <section class="hero-md"></section>
+      <section class="hero-md">
+        <div class="hero-md-inner">
+          <div class="hero-md-header">
+            <img class="logo-md" src="/img/logo.png" alt="Sneak Pay" />
+            <img
+              onclick="openModalNav()"
+              class="hero-md-nav-line"
+              src="/img/nav-bar.png"
+              alt="Sneak Pay"
+            />
+          </div>
+          <div class="hero-md-body">
+            <h1 class="hero-md-text-title">
+              Create, Personalize, and Animate Your Digital Twin
+            </h1>
+            <p class="hero-md-text-sub-title">
+              Welcome to Goodangel, where AI meets your imagination. Securely
+              craft your custom avatar with facial and voice recognition, and
+              bring it to life in stunning 3D scenes and videos. Join Goodangel
+              today and step into the future of digital self-expression
+            </p>
+            <div class="hero-md-rating">
+              <p>
+                Excellent <span class="hero-trust-span"> 4.5 out of 5 </span>
+              </p>
+              <img class="trust-stars" src="/img/stars.png" alt="trust-score" />
+            </div>
+            <div class="hero-md-app-download">
+              <img
+                class="hero-md-app-download-img-google"
+                src="/img/google.png"
+                alt="hero-img"
+              />
+              <img
+                class="hero-md-app-download-img-apple"
+                src="/img/apple.png"
+                alt="hero-img"
+              />
+            </div>
+          </div>
+          <img
+            class="hero-md-image"
+            src="/img/circle-hero.png"
+            alt="hero-img"
+          />
+          <!-- <div class="gif-container"> -->
+          <img class="hero-image-gif" src="/img/loading.gif" alt="Sneak Pay" />
+          <!-- </div> -->
+          <!-- <img class="hero-md-image" src="/img/phone.png" alt="Sneak Pay" /> -->
+        </div>
+      </section>
       <section class="why-md">
         <div class="why-inner-md">
           <div class="why-text-md">
@@ -382,10 +491,7 @@
                   <img src="/img/globe.png" alt="secure" />
                 </div>
                 <h3>Globality</h3>
-                <p>
-                  Send payments to the person in front of you and the rest of
-                  the world.
-                </p>
+                <p>Connecting you to a world of limitless possibilities</p>
               </div>
             </div>
             <div class="why-icon-md">
@@ -394,10 +500,7 @@
                   <img src="/img/integration.png" alt="secure" />
                 </div>
                 <h3>Integrate</h3>
-                <p>
-                  We work with local banks and overseas banks so you don’t have
-                  to worry.
-                </p>
+                <p>Seamlessly connect and enhance your digital experiences.</p>
               </div>
             </div>
           </div>
@@ -405,17 +508,17 @@
             <div class="why-card-inner-md">
               <div class="why-card-side1-md">
                 <div class="why-card-text">
-                  <h1>Payments</h1>
+                  <h1>AI</h1>
                   <p>
-                    Free instant bank transfers, custom fund flows, send and
-                    receive money and more.
+                    leverages AI to bring diverse perspectives and opportunities
+                    right to your fingertips.
                   </p>
                 </div>
-                <div class="why2-payment-icon first">Receive</div>
-                <div class="why2-payment-icon second">Save</div>
+                <div class="why2-payment-icon first">Create</div>
+                <div class="why2-payment-icon second">Personalize</div>
               </div>
               <div class="why-card-side2-md">
-                <div class="why2-payment-icon third">Pay</div>
+                <div class="why2-payment-icon third">Animate</div>
                 <img
                   class="why2-payment-image-md"
                   src="/img/why-phone.png"
@@ -424,6 +527,11 @@
               </div>
             </div>
           </div>
+          <img
+            class="why-circle-md-image"
+            src="/img/circle-hero.png"
+            alt="Sneak Pay"
+          />
         </div>
       </section>
       <section class="what-md">
@@ -432,11 +540,11 @@
           <div class="what-info-container">
             <div class="what-info">
               <div class="what-info-inner first">
-                <h3>Turn your phone into a POS(at no cost)</h3>
+                <h3>Custom Avatars</h3>
                 <p>
-                  At zero cost. Don’t spend money buying a POS for #150,00. You
-                  funds for liquidity instead . Anyone can now provide POS
-                  services right from their mobile phone
+                  Create lifelike avatars with advanced facial and voice
+                  recognition, bringing your digital twin to life with unmatched
+                  accuracy and personalization.
                 </p>
               </div>
               <img
@@ -447,10 +555,23 @@
             </div>
             <div class="what-info second">
               <div class="what-info-inner">
-                <h3>Make invoiced payments in seconds</h3>
+                <h3>Immersive Experiences</h3>
                 <p>
-                  Create tailored detailed invoices at the click of a button and
-                  receive payments in seconds through invoice links
+                  Transform your imagination into reality with cutting-edge
+                  text-to-image and script functionalities, allowing your avatar
+                  to interact in dynamic 3D scenes and videos.
+                </p>
+              </div>
+              <img src="/img/what-star.png" class="what-star" />
+            </div>
+            <div class="what-info second">
+              <div class="what-info-inner">
+                <h3>Secure Identity</h3>
+                <p>
+                  Ensure your digital identity is protected with robust
+                  authentication methods, including government ID verification
+                  and real-time face matching, for a secure and personalized
+                  experience.
                 </p>
               </div>
               <img src="/img/what-star.png" class="what-star" />
@@ -460,7 +581,7 @@
                 <h3>All ATM cards in one place</h3>
                 <p>
                   Keep all physical and virtual cards in one place. Save time
-                  and focus o what maters
+                  and focus on what matters
                 </p>
               </div>
               <img src="/img/what-star.png" class="what-star" />
@@ -472,6 +593,11 @@
             <img class="what1-img-3" src="/img/what3.png" alt="what3" />
           </div>
         </div>
+        <img
+          class="what-circle-md-image"
+          src="/img/circle-hero.png"
+          alt="Sneak Pay"
+        />
       </section>
       <section class="product-md">
         <div class="product-inner-md">
@@ -481,8 +607,8 @@
               Product
             </h1>
             <p>
-              Want to make payment secretly with the touch of finger? With
-              GoodAngel, you can make any practically transaction
+              Unleashing the power of AI to create, personalize, and protect
+              your digital identity like never before.
             </p>
           </div>
           <div class="product-section-md">
@@ -491,10 +617,10 @@
                 <div class="pbs-icon-md">
                   <img src="/img/double_ring.png" alt="psb1" />
                 </div>
-                <h3>Easy Transaction</h3>
+                <h3>Advanced Facial Recognition</h3>
                 <p>
-                  Save time and energy. Just send a damn invoice and get paid in
-                  seconds.
+                  Securely create your custom avatar with precise facial
+                  recognition technology
                 </p>
               </div>
             </div>
@@ -503,10 +629,11 @@
                 <div class="pbs-icon-md">
                   <img src="/img/piggy.png" alt="psb1" />
                 </div>
-                <h3>Earn Money</h3>
+                <h3>Voice Synthesis</h3>
                 <p>
-                  Earn money with zero capital. Turn your phone into an
-                  honeypot.
+                  Generate a realistic voice sample that perfectly matches your
+                  avatar, enhancing the authenticity of your digital
+                  interactions.
                 </p>
               </div>
             </div>
@@ -515,10 +642,11 @@
                 <div class="pbs-icon-md">
                   <img src="/img/privacy.png" alt="psb1" />
                 </div>
-                <h3>Privacy</h3>
+                <h3>Text-to-Image Creation</h3>
                 <p>
-                  Make payments more privately and secured without sharing
-                  account details. Keep your data safe.
+                  Transform your words into stunning visual scenes, seamlessly
+                  integrating your custom avatar into dynamic and immersive
+                  environments.
                 </p>
               </div>
             </div>
@@ -527,22 +655,48 @@
                 <div class="pbs-icon-md">
                   <img src="/img/lock.png" alt="psb1" />
                 </div>
-                <h3>Always Protected</h3>
+                <h3>Scripted Animations</h3>
                 <p>
-                  You can protect your ATM cards details and prevent them from
-                  being stolen.
+                  Bring your avatar to life with customizable scripts, allowing
+                  it to speak and interact in downloadable videos, adding a
+                  personal touch to your digital content.
                 </p>
               </div>
             </div>
           </div>
+          <img
+            class="product-md-star first-star"
+            src="/img/product-star.png"
+            alt="star"
+          />
+          <img
+            class="product-md-star second-star"
+            src="/img/product-star.png"
+            alt="star"
+          />
+          <img
+            class="product-md-star third-star"
+            src="/img/product-star.png"
+            alt="star"
+          />
+          <img
+            class="product-md-star fourth-star"
+            src="/img/product-color-star.png"
+            alt="star"
+          />
+          <img
+            class="product-md-star fifth-star"
+            src="/img/product-star.png"
+            alt="star"
+          />
         </div>
       </section>
       <section class="manage-md">
         <div class="manage-inner-md">
           <div class="manage-header-text-md">
             <h2>
-              Start Managing Your Finance <br />
-              In Few Minutes
+              Create Your Digital Twin <br />
+              In Just Minutes
             </h2>
           </div>
           <div class="manage-main-inner-md">
@@ -554,10 +708,10 @@
                     <div class="mab-side1-line-md"></div>
                   </div>
                   <div class="mab-side2-md">
-                    <h3>Create an account</h3>
+                    <h3>Verify Your Identity</h3>
                     <p>
-                      Sign up for an account with just your name, email and
-                      phone number
+                      Upload your government ID and take a real-time selfie for
+                      secure facial recognition and identity verification.
                     </p>
                   </div>
                 </div>
@@ -569,10 +723,10 @@
                     <div class="mab-side1-line-md"></div>
                   </div>
                   <div class="mab-side2-md">
-                    <h3>Add new card</h3>
+                    <h3>Create Your Avatar</h3>
                     <p>
-                      Create a new card that you can use anytime and anywhere,
-                      you can add previous card too
+                      Provide a voice sample and customize your digital twin
+                      with advanced AI tools for a lifelike representation.
                     </p>
                   </div>
                 </div>
@@ -583,10 +737,11 @@
                     <div class="mab-side1-no-md">03</div>
                   </div>
                   <div class="mab-side2-md">
-                    <h3>Make payment & transfer</h3>
+                    <h3>Animate and Share</h3>
                     <p>
-                      You can now manage all your accounts and make payment
-                      privately
+                      Use text-to-image and script functionalities to bring your
+                      avatar to life in immersive scenes and videos, ready to
+                      share with the world.
                     </p>
                   </div>
                 </div>
@@ -595,14 +750,19 @@
             <img class="manage-phone-md" src="/img/manage.png" alt="phone" />
           </div>
         </div>
+        <img
+          class="manage-circle-md-image"
+          src="/img/circle-hero.png"
+          alt="Sneak Pay"
+        />
       </section>
       <section class="get-md">
         <div class="get-md-inner">
           <div class="get-md-text">
             <h1>Get GoodAngel App on Google Play or App Store</h1>
             <p>
-              Download the GoodAngel app and start managing your finance
-              privately with ease
+              Download the GoodAngel app and start managing your digital twin's
+              features securely and with ease.
             </p>
           </div>
           <div class="get-md-image">
@@ -617,23 +777,24 @@
       </section>
       <section class="footer-md">
         <div class="footer-inner-md">
-          <img class="logo-md" src="/img/logo-white.png" alt="logo" />
+          <!-- <img class="logo-white-md" src="/img/logo-white.png" alt="logo" /> -->
           <p class="logo-text-md">
-            Just a financial app to make <br />
-            payment privately
+            Create, Animate, Personalize <br />
+            and so much more
           </p>
           <div class="footer-bar-md">
             <div class="footer-bar-inner-md">
               <p class="footer-header-text">Links</p>
               <p>About Us</p>
+              <p>What We Offer</p>
               <p>Why Our Product</p>
               <p>Contact Us</p>
             </div>
             <div class="footer-bar-inner-md">
               <p class="footer-header-text">Support</p>
               <p>FAQs</p>
-              <p>Help Centre</p>
-              <p>Security</p>
+              <p>Instant Support</p>
+              <p>Docs</p>
             </div>
             <div class="footer-bar-inner-md">
               <p class="footer-header-text">Legal</p>
@@ -645,5 +806,22 @@
         </div>
       </section>
     </section>
+    <script>
+      function closeModal() {
+        const modal = document.getElementById("myModal");
+        modal.style.display = "none";
+      }
+      function openModalNav() {
+        console.log("open");
+        const modal = document.getElementById("myNavModal");
+        modal.style.display = "flex";
+      }
+      function closeModalNav() {
+        setTimeout(() => {
+          const modal = document.getElementById("myNavModal");
+          modal.style.display = "none";
+        }, 1000);
+      }
+    </script>
   </body>
 </html>
