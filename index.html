@@ -14,6 +14,7 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="index.css" />
+    <script src="index.js"></script>
     <meta name="description" content="GoodAngel" />
     <meta
       name="keywords"
@@ -44,40 +45,45 @@
               <!-- <img class="logo" src="/img/logo.png" alt="Sneak Pay" /> -->
             </div>
             <div class="hero-header_nav">
-              <p><a href="#about">About Us</a></p>
-              <p><a href="#what">What We Offer</a></p>
+              <p><a href="#about">About </a></p>
+              <p><a href="#what">Use Cases</a></p>
               <p>
-                <a href="#product">Why Our Product</a>
+                <a href="#product">What we offer</a>
+              </p>
+              <p>
+                <a href="#product">Why GoodAngel</a>
               </p>
               <p><a href="#footer">Contact Us</a></p>
-              <div class="header-cta">
+              <p><a href="#footer">Pricing</a></p>
+              <!-- <div class="header-cta">
                 <p>
                   <a style="color: white" href="/waitlist">Demo</a>
                 </p>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
         <div class="hero-body">
           <div class="hero-body-inner">
             <div class="hero-body-text">
-              <h1 class="hero-text">
-                Create, Personalize, and Animate Your Digital Twin
-              </h1>
+              <h1 class="hero-text">Clone your Face and Voice</h1>
               <p class="hero-sub-text">
-                Welcome to Goodangel, where AI meets your imagination. Securely
-                craft your custom avatar with facial and voice recognition, and
-                bring it to life in stunning 3D scenes and videos. Join
-                Goodangel today and step into the future of digital
-                self-expression
+                The world’s first ever Digital Twin social media platform!
+                Message friends and family. Create, then share video, image and
+                article playlists. Simply record/upload a selfie, as well as a
+                voice sample and generate your Digital Twin!
               </p>
               <div class="app-image-container">
                 <img
                   class="app-image-google"
-                  src="/img/google.png"
+                  src="/img/google2.png"
                   alt="hero-img"
                 />
-                <img class="app-image" src="/img/apple.png" alt="hero-img" />
+                <img
+                  class="app-image"
+                  src="/img/applestore.png"
+                  alt="hero-img"
+                />
               </div>
               <div class="trust-score">
                 <p>
@@ -90,33 +96,173 @@
                 />
               </div>
             </div>
+
             <div class="gif-container">
-              <img
-                class="hero-image-gif"
-                src="/img/loading.gif"
-                alt="Sneak Pay"
-              />
+              <div class="demo">
+                <div id="demo-text" class="demo-text">
+                  Click on Capture Selfie to start
+                </div>
+                <video
+                  id="video"
+                  width="100%"
+                  height="100%"
+                  class="video"
+                  autoplay
+                ></video>
+                <audio
+                  id="audio"
+                  class="audio"
+                  src="/default.mp3"
+                  controls
+                ></audio>
+                <image id="image" class="image" src="/img/loading.gif" />
+                <image id="image-audio" class="image" src="/img/loading.gif" />
+                <div class="demo-action">
+                  <div id="audio-action" class="action">
+                    Record Voice
+                    <img
+                      class="setting-img"
+                      src="/img/stop-button.png"
+                      alt="setting"
+                    />
+                  </div>
+                  <div id="audio-setting" class="action">
+                    <div id="send-audio" class="setting">
+                      <img
+                        class="setting-img"
+                        src="/img/send.png"
+                        alt="setting"
+                      />
+                    </div>
+                    <div id="play-audio" class="setting">
+                      <img
+                        class="setting-img"
+                        src="/img/play-button.png"
+                        alt="setting"
+                      />
+                    </div>
+                    <div id="capture-audio" class="setting">
+                      <img
+                        class="setting-img"
+                        src="/img/stop-button.png"
+                        alt="setting"
+                      />
+                    </div>
+                    <div id="delete-audio" class="setting">
+                      <img
+                        class="setting-img"
+                        src="/img/trash.png"
+                        alt="setting"
+                      />
+                    </div>
+                    <div id="stop-audio" class="setting">
+                      <img
+                        class="setting-img"
+                        src="/img/stop.png"
+                        alt="setting"
+                      />
+                    </div>
+                    <div id="stop-audio-loading" class="setting">
+                      <video
+                        class="setting-img"
+                        src="/img/loading.webm"
+                        alt="setting"
+                        autoplay
+                        loop
+                      ></video>
+                    </div>
+                  </div>
+                  <div id="video-action" class="action">
+                    Capture Selfie
+                    <img
+                      class="setting-img"
+                      src="/img/stop-button.png"
+                      alt="setting"
+                    />
+                  </div>
+
+                  <div id="video-setting" class="action">
+                    <div id="send" class="setting">
+                      <img
+                        class="setting-img"
+                        src="/img/send.png"
+                        alt="setting"
+                      />
+                    </div>
+                    <div class="setting">
+                      <img
+                        class="setting-img"
+                        src="/img/play-button.png"
+                        alt="setting"
+                      />
+                    </div>
+                    <div id="capture" class="setting">
+                      <img
+                        class="setting-img"
+                        src="/img/stop-button.png"
+                        alt="setting"
+                      />
+                    </div>
+                    <div id="delete" class="setting">
+                      <img
+                        class="setting-img"
+                        src="/img/trash.png"
+                        alt="setting"
+                      />
+                    </div>
+                    <div id="stop" class="setting">
+                      <img
+                        class="setting-img"
+                        src="/img/stop.png"
+                        alt="setting"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <audio
+                  id="audio"
+                  class="audio"
+                  src="/default.mp3"
+                  controls
+                ></audio>
+              </div>
             </div>
-            <!-- <img class="hero-image-sd" src="/img/phone.png" alt="Sneak Pay" /> -->
           </div>
-          <img class="hero-image" src="/img/circle-hero.png" alt="hero-img" />
-          <!-- <img class="hero-image-gif" src="/img/loading.gif" alt="Sneak Pay" /> -->
+
+          <!-- <img class="hero-image" src="/img/circle-hero.png" alt="hero-img" /> -->
         </div>
       </section>
+      .
 
       <section id="about" class="why-section">
         <div class="why-section-inner">
           <div class="why1">
-            <h1 class="why1-title">
-              Why <br />
-              GoodAngel
-            </h1>
+            <h1 class="why1-title">About</h1>
             <p class="why1-sub-title">
-              Experience the ultimate fusion of security and creativity.
-              Goodangel ensures your digital identity is protected while
-              empowering you to create lifelike avatars and immersive
-              experiences. Transform the way you express yourself with
-              cutting-edge AI technology and unparalleled personalization.
+              Imagine looking into a mirror and having your reflection speak to
+              you in your voice. That pretty much describes what you’ll
+              experience on the Goodangel platform.
+              <br />
+              <br />
+              Added as goodies to make your Digital twin more meaningful is a
+              messaging system that allows users to record voice messages that
+              are then sent by their digital twins.
+              <br />
+              <br />
+              Also a folder management system that is hosted by a user’s digital
+              twin allows for the creation, organization and sharing of video,
+              image and article playlists, that are generated as a result of
+              user answers to their Digital twin’s prompts.
+              <br />
+              <br />
+              Best of all, Goodangel’s account creation process includes users
+              providing government identification to be crosschecked using
+              facial and voice recognition. As a security protocol, this
+              guarantees a user’s authenticity, providing the most optimum
+              solution for securely harnessing this wonderful technology.
+              <br />
+              <br />
+              AI create your Digital Twin with just a selfie and voice sample.
             </p>
             <div class="why1-icon-container">
               <div class="why1-icon">
@@ -127,8 +273,11 @@
                     alt="why1"
                   />
                 </div>
-                <h3>Globality</h3>
-                <p>Connecting you to a world of limitless possibilities</p>
+                <h3>Messaging system</h3>
+                <p>
+                  Record voice messages that can be sent via your Digital Twin
+                  to other users on the platform.
+                </p>
               </div>
               <div class="why1-icon">
                 <div class="why1-icon_img">
@@ -138,9 +287,28 @@
                     alt="why1"
                   />
                 </div>
-                <h3>Integrate</h3>
-                <p>Seamlessly connect and enhance your digital experiences.</p>
+                <h3>Chatbot</h3>
+                <p>
+                  Attached to Chatgpt, a user’s digital twin is able to respond
+                  to user’s questions.
+                </p>
               </div>
+            </div>
+            <div style="width: 100%; margin-top: 20px" class="why1-icon">
+              <div class="why1-icon_img">
+                <img
+                  class="why1-icon-image"
+                  src="/img/integration.png"
+                  alt="why1"
+                />
+              </div>
+              <h3>Digital Twin managed folder management system</h3>
+              <p>
+                Through prompts delivered by a user’s digital twin, users are
+                able to have video, image and article playlists created and
+                added to folders users will have access to, and will also be
+                able to share with other users.
+              </p>
             </div>
           </div>
           <div class="why2">
@@ -181,11 +349,10 @@
             <div class="what-info-container">
               <div class="what-info">
                 <div class="what-info-inner first">
-                  <h3>Custom Avatars</h3>
+                  <h3>Digital Twins</h3>
                   <p>
-                    Create lifelike avatars with advanced facial and voice
-                    recognition, bringing your digital twin to life with
-                    unmatched accuracy and personalization.
+                    Created from user supplied data. Digital Twins offer an
+                    accurate recreation of a user’s voice and face.
                   </p>
                 </div>
                 <img
@@ -196,33 +363,22 @@
               </div>
               <div class="what-info second">
                 <div class="what-info-inner">
-                  <h3>Immersive Experiences</h3>
+                  <h3>Secured Identification</h3>
                   <p>
-                    Transform your imagination into reality with cutting-edge
-                    text-to-image and script functionalities, allowing your
-                    avatar to interact in dynamic 3D scenes and videos.
+                    Possible through a government identification crosscheck.
+                    Also, Goodangel also offers real time voice recognition
+                    capabilities thus guaranteeing a user’s identity.
                   </p>
                 </div>
                 <img src="/img/what-star.png" class="what-star" />
               </div>
               <div class="what-info second">
                 <div class="what-info-inner">
-                  <h3>Secure Identity</h3>
+                  <h3>Create and Share playlist</h3>
                   <p>
-                    Ensure your digital identity is protected with robust
-                    authentication methods, including government ID verification
-                    and real-time face matching, for a secure and personalized
-                    experience.
-                  </p>
-                </div>
-                <img src="/img/what-star.png" class="what-star" />
-              </div>
-              <div class="what-info third">
-                <div class="what-info-inner">
-                  <h3>All ATM cards in one place</h3>
-                  <p>
-                    Keep all physical and virtual cards in one place. Save time
-                    and focus on what matters
+                    With your Digital Twin prompting you to let them know your
+                    likes and interests, Folders and subfolders can be generated
+                    containing video, image, and article playlists
                   </p>
                 </div>
                 <img src="/img/what-star.png" class="what-star" />
@@ -239,13 +395,11 @@
       <section class="product-section">
         <div class="product-section-inner">
           <div class="product-section-text">
-            <h1>
-              Why Our <br />
-              Product
-            </h1>
+            <h1>Why Goodangel</h1>
             <p>
-              Unleashing the power of AI to create, personalize, and protect
-              your digital identity like never before.
+              Your Digital Twin can not only mirror a user; it can positively
+              impact a user. Through Goodangel, users are now able to unleash
+              the full potential of AI to see themselves in a new light.
             </p>
           </div>
           <div class="product-section-box">
@@ -279,24 +433,24 @@
                 <div class="pbs-icon">
                   <img src="/img/privacy.png" alt="psb1" />
                 </div>
-                <h3>Text-to-Image Creation</h3>
+                <h3>Scripted Animations</h3>
                 <p>
-                  Transform your words into stunning visual scenes, seamlessly
-                  integrating your custom avatar into dynamic and immersive
-                  environments.
+                  Bring your avatar to life with customizable scripts, allowing
+                  it to speak and interact in downloadable videos, adding a
+                  personal touch to your digital content.
                 </p>
               </div>
             </div>
             <div class="psb fourth">
               <div class="psb-inner">
                 <div class="pbs-icon">
-                  <img src="/img/lock.png" alt="psb1" />
+                  <img src="/img/privacy.png" alt="psb1" />
                 </div>
-                <h3>Scripted Animations</h3>
+                <h3>Text-to-Image Creation</h3>
                 <p>
-                  Bring your avatar to life with customizable scripts, allowing
-                  it to speak and interact in downloadable videos, adding a
-                  personal touch to your digital content.
+                  Transform your words into stunning visual scenes, seamlessly
+                  integrating your custom avatar into dynamic and immersive
+                  environments.
                 </p>
               </div>
             </div>
@@ -310,8 +464,8 @@
           </div>
           <div class="manage2">
             <h2>
-              Start Managing Your Finance <br />
-              In Few Minutes
+              Create Your Digital Twin <br />
+              In Just Minutes
             </h2>
             <div class="manage2-adv">
               <div class="manage2-adv-inner">
@@ -322,10 +476,10 @@
                       <div class="mab-side1-line"></div>
                     </div>
                     <div class="mab-side2">
-                      <h3>Create an account</h3>
+                      <h3>Verify Your Identity</h3>
                       <p>
-                        Sign up for an account with just your name, email and
-                        phone number
+                        Upload your government ID and take a real-time selfie
+                        for secure facial recognition and identity verification.
                       </p>
                     </div>
                   </div>
@@ -337,10 +491,10 @@
                       <div class="mab-side1-line"></div>
                     </div>
                     <div class="mab-side2">
-                      <h3>Add new card</h3>
+                      <h3>Create Your Avatar</h3>
                       <p>
-                        Add any card that you wish use anytime and anywhere, you
-                        can add virtual card too
+                        Provide a voice sample and customize your digital twin
+                        with advanced AI tools for a lifelike representation.
                       </p>
                     </div>
                   </div>
@@ -351,10 +505,11 @@
                       <div class="mab-side1-no">03</div>
                     </div>
                     <div class="mab-side2">
-                      <h3>Make payment & transfer</h3>
+                      <h3>Animate and Share</h3>
                       <p>
-                        You can now manage all your accounts and make payments
-                        with ease
+                        Use text-to-image and script functionalities to bring
+                        your avatar to life in immersive scenes and videos,
+                        ready to share with the world.
                       </p>
                     </div>
                   </div>
@@ -379,10 +534,10 @@
           <div class="app-section-image">
             <img
               class="app-image-google"
-              src="/img/google.png"
+              src="/img/google2.png"
               alt="hero-img"
             />
-            <img class="app-image" src="/img/apple.png" alt="hero-img" />
+            <img class="app-image" src="/img/applestore.png" alt="hero-img" />
           </div>
         </div>
       </section>
@@ -432,14 +587,12 @@
             />
           </div>
           <div class="hero-md-body">
-            <h1 class="hero-md-text-title">
-              Create, Personalize, and Animate Your Digital Twin
-            </h1>
+            <h1 class="hero-md-text-title">Clone your Face and Voice</h1>
             <p class="hero-md-text-sub-title">
-              Welcome to Goodangel, where AI meets your imagination. Securely
-              craft your custom avatar with facial and voice recognition, and
-              bring it to life in stunning 3D scenes and videos. Join Goodangel
-              today and step into the future of digital self-expression
+              The world’s first ever Digital Twin social media platform! Message
+              friends and family. Create, then share video, image and article
+              playlists. Simply record/upload a selfie, as well as a voice
+              sample and generate your Digital Twin!
             </p>
             <div class="hero-md-rating">
               <p>
@@ -450,23 +603,152 @@
             <div class="hero-md-app-download">
               <img
                 class="hero-md-app-download-img-google"
-                src="/img/google.png"
+                src="/img/google2.png"
                 alt="hero-img"
               />
               <img
                 class="hero-md-app-download-img-apple"
-                src="/img/apple.png"
+                src="/img/applestore.png"
                 alt="hero-img"
               />
             </div>
           </div>
-          <img
+          <!-- <img
             class="hero-md-image"
             src="/img/circle-hero.png"
             alt="hero-img"
-          />
+          /> -->
           <!-- <div class="gif-container"> -->
-          <img class="hero-image-gif" src="/img/loading.gif" alt="Sneak Pay" />
+          <div class="gif-container-md">
+            <div class="demo">
+              <div id="demo-text-md" class="demo-text">
+                Click on Capture Selfie to start
+              </div>
+              <video
+                id="video-md"
+                width="100%"
+                height="100%"
+                class="video"
+                autoplay
+              ></video>
+              <audio
+                id="audio-md"
+                class="audio"
+                src="/default.mp3"
+                controls
+              ></audio>
+              <image id="image-md" class="image" src="/img/loading.gif" />
+              <image id="image-audio-md" class="image" src="/img/loading.gif" />
+              <div class="demo-action">
+                <div id="audio-action-md" class="action">
+                  Record Voice
+                  <img
+                    class="setting-img"
+                    src="/img/stop-button.png"
+                    alt="setting"
+                  />
+                </div>
+                <div id="audio-setting-md" class="action">
+                  <div id="send-audio-md" class="setting">
+                    <img
+                      class="setting-img"
+                      src="/img/send.png"
+                      alt="setting"
+                    />
+                  </div>
+                  <div id="play-audio-md" class="setting">
+                    <img
+                      class="setting-img"
+                      src="/img/play-button.png"
+                      alt="setting"
+                    />
+                  </div>
+                  <div id="capture-audio-md" class="setting">
+                    <img
+                      class="setting-img"
+                      src="/img/stop-button.png"
+                      alt="setting"
+                    />
+                  </div>
+                  <div id="delete-audio-md" class="setting">
+                    <img
+                      class="setting-img"
+                      src="/img/trash.png"
+                      alt="setting"
+                    />
+                  </div>
+                  <div id="stop-audio-md" class="setting">
+                    <img
+                      class="setting-img"
+                      src="/img/stop.png"
+                      alt="setting"
+                    />
+                  </div>
+                  <div id="stop-audio-loading-md" class="setting">
+                    <video
+                      class="setting-img"
+                      src="/img/loading.webm"
+                      alt="setting"
+                      autoplay
+                      loop
+                    ></video>
+                  </div>
+                </div>
+                <div id="video-action-md" class="action">
+                  Capture Selfie
+                  <img
+                    class="setting-img"
+                    src="/img/stop-button.png"
+                    alt="setting"
+                  />
+                </div>
+
+                <div id="video-setting-md" class="action">
+                  <div id="send-md" class="setting">
+                    <img
+                      class="setting-img"
+                      src="/img/send.png"
+                      alt="setting"
+                    />
+                  </div>
+                  <div class="setting-md">
+                    <img
+                      class="setting-img"
+                      src="/img/play-button.png"
+                      alt="setting"
+                    />
+                  </div>
+                  <div id="capture-md" class="setting">
+                    <img
+                      class="setting-img"
+                      src="/img/stop-button.png"
+                      alt="setting"
+                    />
+                  </div>
+                  <div id="delete-md" class="setting">
+                    <img
+                      class="setting-img"
+                      src="/img/trash.png"
+                      alt="setting"
+                    />
+                  </div>
+                  <div id="stop-md" class="setting">
+                    <img
+                      class="setting-img"
+                      src="/img/stop.png"
+                      alt="setting"
+                    />
+                  </div>
+                </div>
+              </div>
+              <audio
+                id="audio--md"
+                class="audio"
+                src="/default.mp3"
+                controls
+              ></audio>
+            </div>
+          </div>
           <!-- </div> -->
           <!-- <img class="hero-md-image" src="/img/phone.png" alt="Sneak Pay" /> -->
         </div>
@@ -479,9 +761,30 @@
               GoodAngel?
             </h1>
             <p>
-              GoodAngel is a financial management platfrom that helps you to
-              make a secured private payment with ease which also gives you room
-              to manage all your banks in just a App
+              Imagine looking into a mirror and having your reflection speak to
+              you in your voice. That pretty much describes what you’ll
+              experience on the Goodangel platform.
+              <br />
+              <br />
+              Added as goodies to make your Digital twin more meaningful is a
+              messaging system that allows users to record voice messages that
+              are then sent by their digital twins.
+              <br />
+              <br />
+              Also a folder management system that is hosted by a user’s digital
+              twin allows for the creation, organization and sharing of video,
+              image and article playlists, that are generated as a result of
+              user answers to their Digital twin’s prompts.
+              <br />
+              <br />
+              Best of all, Goodangel’s account creation process includes users
+              providing government identification to be crosschecked using
+              facial and voice recognition. As a security protocol, this
+              guarantees a user’s authenticity, providing the most optimum
+              solution for securely harnessing this wonderful technology.
+              <br />
+              <br />
+              AI create your Digital Twin with just a selfie and voice sample.
             </p>
           </div>
           <div class="why-icon-container-md">
@@ -490,8 +793,11 @@
                 <div class="why-icon-img-md">
                   <img src="/img/globe.png" alt="secure" />
                 </div>
-                <h3>Globality</h3>
-                <p>Connecting you to a world of limitless possibilities</p>
+                <h3>Messaging system</h3>
+                <p>
+                  Record voice messages that can be sent via your Digital Twin
+                  to other users on the platform.
+                </p>
               </div>
             </div>
             <div class="why-icon-md">
@@ -499,8 +805,27 @@
                 <div class="why-icon-img-md">
                   <img src="/img/integration.png" alt="secure" />
                 </div>
-                <h3>Integrate</h3>
-                <p>Seamlessly connect and enhance your digital experiences.</p>
+                <h3>Chatbot</h3>
+                <p>
+                  Through prompts delivered by a user’s digital twin, users are
+                  able to have video, image and article playlists created and
+                  added to folders users will have access to, and will also be
+                  able to share with other users.
+                </p>
+              </div>
+            </div>
+            <div class="why-icon-md">
+              <div class="why-icon-inner-md">
+                <div class="why-icon-img-md">
+                  <img src="/img/integration.png" alt="secure" />
+                </div>
+                <h3>Digital Twin managed folder management system</h3>
+                <p>
+                  Through prompts delivered by a user’s digital twin, users are
+                  able to have video, image and article playlists created and
+                  added to folders users will have access to, and will also be
+                  able to share with other users.
+                </p>
               </div>
             </div>
           </div>
@@ -540,11 +865,10 @@
           <div class="what-info-container">
             <div class="what-info">
               <div class="what-info-inner first">
-                <h3>Custom Avatars</h3>
+                <h3>Digital Twins</h3>
                 <p>
-                  Create lifelike avatars with advanced facial and voice
-                  recognition, bringing your digital twin to life with unmatched
-                  accuracy and personalization.
+                  Created from user supplied data. Digital Twins offer an
+                  accurate recreation of a user’s voice and face.
                 </p>
               </div>
               <img
@@ -555,33 +879,22 @@
             </div>
             <div class="what-info second">
               <div class="what-info-inner">
-                <h3>Immersive Experiences</h3>
+                <h3>Secured Identification</h3>
                 <p>
-                  Transform your imagination into reality with cutting-edge
-                  text-to-image and script functionalities, allowing your avatar
-                  to interact in dynamic 3D scenes and videos.
+                  Possible through a government identification crosscheck. Also,
+                  Goodangel also offers real time voice recognition capabilities
+                  thus guaranteeing a user’s identity.
                 </p>
               </div>
               <img src="/img/what-star.png" class="what-star" />
             </div>
             <div class="what-info second">
               <div class="what-info-inner">
-                <h3>Secure Identity</h3>
+                <h3>Create and Share playlist</h3>
                 <p>
-                  Ensure your digital identity is protected with robust
-                  authentication methods, including government ID verification
-                  and real-time face matching, for a secure and personalized
-                  experience.
-                </p>
-              </div>
-              <img src="/img/what-star.png" class="what-star" />
-            </div>
-            <div class="what-info third">
-              <div class="what-info-inner">
-                <h3>All ATM cards in one place</h3>
-                <p>
-                  Keep all physical and virtual cards in one place. Save time
-                  and focus on what matters
+                  With your Digital Twin prompting you to let them know your
+                  likes and interests, Folders and subfolders can be generated
+                  containing video, image, and article playlists
                 </p>
               </div>
               <img src="/img/what-star.png" class="what-star" />
@@ -768,10 +1081,14 @@
           <div class="get-md-image">
             <img
               class="app-image-google-md"
-              src="/img/google.png"
+              src="/img/google2.png"
               alt="hero-img"
             />
-            <img class="app-image-md" src="/img/apple.png" alt="hero-img" />
+            <img
+              class="app-image-md"
+              src="/img/applestore.png"
+              alt="hero-img"
+            />
           </div>
         </div>
       </section>
