@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
     subscribe.style.display = "none";
 
     fetch(
-      "https://tw9rx2hlafqn26-8888.proxy.runpod.net/process_train_and_upload",
+      "https://tw9rx2hlafqn26-5555.proxy.runpod.net/process_train_and_upload",
       {
         method: "POST",
         body: formData,
