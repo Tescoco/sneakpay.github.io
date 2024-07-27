@@ -69,10 +69,35 @@
               <h1 class="hero-text">Clone your Face and Voice</h1>
               <p class="hero-sub-text">
                 The world’s first ever Digital Twin social media platform!
-                Message friends and family. Create, then share video, image and
-                article playlists. Simply record/upload a selfie, as well as a
-                voice sample and generate your Digital Twin!
               </p>
+              <div class="app-samples">
+                <div class="app-samples-inner">
+                  <div class="app-card">
+                    <img src="/img/app_image1.png" class="app-card-main" />
+                    <div class="app-card-label">
+                      <p>Chat Bot</p>
+                    </div>
+                  </div>
+                  <div class="app-card">
+                    <img src="/img/app_image2.png" class="app-card-main" />
+                    <div class="app-card-label">
+                      <p>Messaging</p>
+                    </div>
+                  </div>
+                  <div class="app-card">
+                    <img src="/img/app_image3.png" class="app-card-main" />
+                    <div class="app-card-label">
+                      <p>Folders</p>
+                    </div>
+                  </div>
+                  <div class="app-card">
+                    <img src="/img/app_image4.png" class="app-card-main" />
+                    <div class="app-card-label">
+                      <p>Playlist</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="app-image-container">
                 <img
                   class="app-image-google"
@@ -98,27 +123,41 @@
             </div>
 
             <div class="gif-container">
-              <div class="demo">
+              <div id="demo" class="demo">
                 <div id="demo-text" class="demo-text">
                   Click on Capture Selfie to start
                 </div>
                 <video
                   id="video"
-                  width="100%"
+                  width="80%"
                   height="100%"
                   class="video"
                   autoplay
                 ></video>
+                <div id="hollowSquare" class="hollow-square"></div>
                 <audio
                   id="audio"
                   class="audio"
                   src="/default.mp3"
                   controls
                 ></audio>
-                <image id="image" class="image" src="/img/loading.gif" />
+                <image
+                  style="max-width: 80%"
+                  id="image"
+                  class="image"
+                  src="/img/loading.gif"
+                />
                 <image id="image-audio" class="image" src="/img/loading.gif" />
                 <div class="demo-action">
                   <div id="audio-action" class="action">
+                    Record Voice
+                    <img
+                      class="setting-img"
+                      src="/img/stop-button.png"
+                      alt="setting"
+                    />
+                  </div>
+                  <div id="audio-action-diabled" class="action disabled">
                     Record Voice
                     <img
                       class="setting-img"
@@ -134,27 +173,27 @@
                         alt="setting"
                       />
                     </div>
-                    <div id="play-audio" class="setting">
+                    <!-- <div id="play-audio" class="setting">
                       <img
                         class="setting-img"
                         src="/img/play-button.png"
                         alt="setting"
                       />
-                    </div>
+                    </div> -->
                     <div id="capture-audio" class="setting">
                       <img
                         class="setting-img"
-                        src="/img/stop-button.png"
+                        src="/img/stop-button-red.png"
                         alt="setting"
                       />
                     </div>
-                    <div id="delete-audio" class="setting">
+                    <!-- <div id="delete-audio" class="setting">
                       <img
                         class="setting-img"
                         src="/img/trash.png"
                         alt="setting"
                       />
-                    </div>
+                    </div> -->
                     <div id="stop-audio" class="setting">
                       <img
                         class="setting-img"
@@ -165,7 +204,7 @@
                     <div id="stop-audio-loading" class="setting">
                       <video
                         class="setting-img"
-                        src="/img/loading.webm"
+                        src="/img/audio_loader.webm"
                         alt="setting"
                         autoplay
                         loop
@@ -173,6 +212,15 @@
                     </div>
                   </div>
                   <div id="video-action" class="action">
+                    Capture Selfie
+                    <img
+                      class="setting-img"
+                      src="/img/stop-button.png"
+                      alt="setting"
+                    />
+                  </div>
+
+                  <div id="video-action-disabled" class="action disabled">
                     Capture Selfie
                     <img
                       class="setting-img"
@@ -189,13 +237,27 @@
                         alt="setting"
                       />
                     </div>
-                    <div class="setting">
+                    <div id="send-disable" class="setting disabled">
+                      <img
+                        class="setting-img"
+                        src="/img/send.png"
+                        alt="setting"
+                      />
+                    </div>
+                    <div id="send" class="setting disabled">
+                      <img
+                        class="setting-img"
+                        src="/img/send.png"
+                        alt="setting"
+                      />
+                    </div>
+                    <!-- <div class="setting">
                       <img
                         class="setting-img"
                         src="/img/play-button.png"
                         alt="setting"
                       />
-                    </div>
+                    </div> -->
                     <div id="capture" class="setting">
                       <img
                         class="setting-img"
@@ -210,13 +272,13 @@
                         alt="setting"
                       />
                     </div>
-                    <div id="stop" class="setting">
+                    <!-- <div id="stop" class="setting">
                       <img
                         class="setting-img"
                         src="/img/stop.png"
                         alt="setting"
                       />
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                 <audio
@@ -226,14 +288,48 @@
                   controls
                 ></audio>
               </div>
+              <div id="subscription" class="subscription">
+                <div class="subscription-inner">
+                  <div class="subscription-inner-text">
+                    Enter your email to recieve your digital replica when its
+                    ready
+                  </div>
+                  <div class="subscription-inner-input">
+                    <input
+                      id="name"
+                      type="text"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+                  <div class="subscription-inner-input">
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="Enter your email address"
+                    />
+                  </div>
+                  <button id="subscribe">Subscribe</button>
+                </div>
+              </div>
+              <div id="success" class="success">
+                <div class="subscription-inner">
+                  <img width="100px" src="/img/check.png" alt="success" />
+                  <div
+                    style="padding-top: 20px"
+                    ;
+                    class="subscription-inner-text"
+                  >
+                    All set! Your digital twin will be sent to your email when
+                    its ready
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- <img class="hero-image" src="/img/circle-hero.png" alt="hero-img" /> -->
         </div>
       </section>
-      .
-
       <section id="about" class="why-section">
         <div class="why-section-inner">
           <div class="why1">
@@ -589,11 +685,36 @@
           <div class="hero-md-body">
             <h1 class="hero-md-text-title">Clone your Face and Voice</h1>
             <p class="hero-md-text-sub-title">
-              The world’s first ever Digital Twin social media platform! Message
-              friends and family. Create, then share video, image and article
-              playlists. Simply record/upload a selfie, as well as a voice
-              sample and generate your Digital Twin!
+              The world’s first ever Digital Twin social media platform!
             </p>
+            <div class="app-samples">
+              <div class="app-samples-inner">
+                <div class="app-card">
+                  <div class="app-card-main"></div>
+                  <div class="app-card-label">
+                    <p>Chat Bot</p>
+                  </div>
+                </div>
+                <div class="app-card">
+                  <div class="app-card-main"></div>
+                  <div class="app-card-label">
+                    <p>Messaging</p>
+                  </div>
+                </div>
+                <div class="app-card">
+                  <div class="app-card-main"></div>
+                  <div class="app-card-label">
+                    <p>Folders</p>
+                  </div>
+                </div>
+                <div class="app-card">
+                  <div class="app-card-main"></div>
+                  <div class="app-card-label">
+                    <p>Playlist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="hero-md-rating">
               <p>
                 Excellent <span class="hero-trust-span"> 4.5 out of 5 </span>
@@ -626,7 +747,7 @@
               </div>
               <video
                 id="video-md"
-                width="100%"
+                width="80%"
                 height="100%"
                 class="video"
                 autoplay

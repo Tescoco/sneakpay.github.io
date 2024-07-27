@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("image").style.display = "none";
           document.getElementById("video-action").style.display = "none";
           document.getElementById("video").style.display = "block";
+          document.getElementById("hollowSquare").style.display = "block";
           document.getElementById("video-setting").style.display = "flex";
 
           video.srcObject = mediaStream;
@@ -34,6 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var video = document.getElementById("video");
     var image = document.getElementById("image");
     var canvas = document.createElement("canvas");
+    var send = document.getElementById("send");
+    var send_disable = document.getElementById("send-disable");
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     var ctx = canvas.getContext("2d");
@@ -41,34 +44,47 @@ document.addEventListener("DOMContentLoaded", function () {
     var image = document.getElementById("image");
     image.src = canvas.toDataURL("image/png");
     image.style.display = "block";
+    send.style.display = "block";
+    send_disable.style.display = "none";
     video.style.display = "none";
   });
 
-  document.getElementById("stop").addEventListener("click", function () {
-    var video = document.getElementById("video");
-    var image = document.getElementById("image");
-    document.getElementById("video-action").style.display = "flex";
-    document.getElementById("video-setting").style.display = "none";
-    document.getElementById("demo-text").innerHTML =
-      "Click on Capture Selfie to start";
-    image.src = "/img/loading.gif";
-    image.style.display = "block";
-    video.style.display = "none";
-    video.srcObject.getVideoTracks().forEach(function (track) {
-      track.stop();
-    });
-  });
+  // document.getElementById("stop").addEventListener("click", function () {
+  //   var video = document.getElementById("video");
+  //   var image = document.getElementById("image");
+  //   document.getElementById("video-action").style.display = "flex";
+  //   document.getElementById("video-setting").style.display = "none";
+  //   document.getElementById("demo-text").innerHTML =
+  //     "Click on Capture Selfie to start";
+  //   image.src = "/img/loading.gif";
+  //   image.style.display = "block";
+  //   video.style.display = "none";
+  //   video.srcObject.getVideoTracks().forEach(function (track) {
+  //     track.stop();
+  //   });
+  // });
 
   document.getElementById("delete").addEventListener("click", function () {
     var image = document.getElementById("image");
     var video = document.getElementById("video");
+    var send = document.getElementById("send");
+    var send_disable = document.getElementById("send-disable");
     image.style.display = "none";
     video.style.display = "block";
+    send.style.display = "none";
+    send_disable.style.display = "block";
   });
 
   document.getElementById("send").addEventListener("click", function () {
     var video = document.getElementById("video");
     var image = document.getElementById("image");
+    var hollowSquare = document.getElementById("hollowSquare");
+    var hollowSquare = document.getElementById("hollowSquare");
+    var audioDisabled = document.getElementById("audio-action-diabled");
+    var videoDisabled = document.getElementById("video-action-disabled");
+    var videoAction = document.getElementById("video-action");
+    var audioAction = document.getElementById("audio-action");
+    var videoSetting = document.getElementById("video-setting");
 
     if (image.src.indexOf("loading.gif") > -1) {
       alert("No image to send");
@@ -80,15 +96,21 @@ document.addEventListener("DOMContentLoaded", function () {
     image.src = "/img/loading.gif";
     image.style.display = "block";
     video.style.display = "none";
+    videoAction.style.display = "none";
+    hollowSquare.style.display = "none";
+    videoDisabled.style.display = "flex";
+    videoSetting.style.display = "none";
     video.srcObject.getVideoTracks().forEach(function (track) {
       track.stop();
     });
 
     setTimeout(function () {
       document.getElementById("demo-text").innerHTML =
-        "Processing completes. Please record voice.";
+        "Please now record your voice. You can talk about yourself, should be one minute or more.";
+      audioDisabled.style.display = "none";
+      audioAction.style.display = "flex";
       image.src = previousImage;
-    }, 5000);
+    }, 2000);
   });
 
   function addEventListenerToElements(ids, event, handler) {
@@ -155,13 +177,89 @@ document.addEventListener("DOMContentLoaded", function () {
     audio.src = "/default.mp3";
   }
 
+  // if (image.src.indexOf("loading.gif") > -1) {
+  //   alert("No image to send");
+  //   return;
+  // } else if (audio.src.indexOf("default.mp3") > -1) {
+  //   alert("No audio to send");
+  //   return;
+  // } else if (text.value === "") {
+  //   alert("No text to send");
+  //   return;
+  // } else if (email.value === "" || email.value.indexOf("@") === -1) {
+  //   alert("Invalid email");
+  //   return;
+  // }
+
+  async function upload() {
+    // pick image, audio , text from id text , email from id email
+    var image = document.getElementById("image");
+    var audio = document.getElementById("audio");
+    var name = document.getElementById("name");
+    var email = document.getElementById("email");
+
+    if (image.src.indexOf("loading.gif") > -1) {
+      alert("No image to send");
+      return;
+    } else if (audio.src.indexOf("default.mp3") > -1) {
+      alert("No audio to send");
+      return;
+    } else if (name.value === "") {
+      alert("No text to send");
+      return;
+    } else if (email.value === "" || email.value.indexOf("@") === -1) {
+      alert("Invalid email");
+      return;
+    }
+
+    var formData = new FormData();
+    formData.append("name", name.value);
+    formData.append("email", email.value);
+    var imageBlob = await fetch(image.src).then((r) => r.blob());
+
+    var audioBlob = await fetch(audio.src).then((r) => r.blob());
+    formData.append("image", imageBlob, "image.jpg");
+    formData.append("audio_file", audioBlob, "audio.mp3");
+    formData.append(
+      "data_name",
+      name.value.replace(/\s/g, "_").replace(/[^a-zA-Z]/g, "")
+    );
+    let subscribe = document.getElementById("subscribe");
+    subscribe.style.display = "none";
+
+    fetch(
+      "https://tw9rx2hlafqn26-8888.proxy.runpod.net/process_train_and_upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    setTimeout(() => {
+      let subscription = document.getElementById("subscription");
+      let success = document.getElementById("success");
+      subscription.style.display = "none";
+      success.style.display = "block";
+    }, 2000);
+    // .then(function (response) {
+    //   return response.json();
+    // })
+    // .then(function (data) {
+    //   console.log(data);
+
+    // if (data.success) {
+
+    //   }
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+  }
+
   // Add event listeners to both buttons
-  addEventListenerToElements(
-    ["audio-action", "delete-audio"],
-    "click",
-    startAudioRecording
-  );
-  addEventListenerToElements(["delete-audio"], "click", deleteAudio);
+  addEventListenerToElements(["audio-action"], "click", startAudioRecording);
+  addEventListenerToElements(["subscribe"], "click", upload);
+  // addEventListenerToElements(["delete-audio"], "click", deleteAudio);
 
   document.getElementById("stop-audio").addEventListener("click", function () {
     var audio = document.getElementById("audio");
@@ -177,6 +275,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var audio = document.getElementById("audio");
     var image_audio = document.getElementById("image-audio");
     var image = document.getElementById("image");
+    var audio_setting = document.getElementById("audio-setting");
+    var audio_action_diabled = document.getElementById("audio-action-diabled");
+    var demo = document.getElementById("demo");
+    var subscription = document.getElementById("subscription");
     if (audio.src.indexOf("default.mp3") > -1) {
       alert("No audio to send");
       return;
@@ -188,14 +290,16 @@ document.addEventListener("DOMContentLoaded", function () {
     image_audio.src = "/img/loading.gif";
     image_audio.style.display = "block";
     image.style.display = "none";
+    audio_setting.style.display = "none";
+    audio_action_diabled.style.display = "flex";
 
     setTimeout(function () {
-      document.getElementById("demo-text").innerHTML =
-        "Processing completes. Here is YOO";
-      image_audio.src = "/img/loading.gif";
-      image_audio.style.display = "none";
-      image.style.display = "block";
-    }, 5000);
+      // document.getElementById("demo-text").innerHTML =
+      //   "Processing completes. Here is YOO";
+      // image_audio.src = "/img/loading.gif";
+      demo.style.display = "none";
+      subscription.style.display = "flex";
+    }, 2000);
   });
 
   // document
@@ -429,7 +533,7 @@ document.addEventListener("DOMContentLoaded", function () {
         image_audio.src = "/img/loading.gif";
         image_audio.style.display = "none";
         image.style.display = "block";
-      }, 5000);
+      }, 2000);
     });
 
   // document
