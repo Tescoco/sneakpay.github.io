@@ -224,6 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "data_name",
       name.value.replace(/\s/g, "_").replace(/[^a-zA-Z]/g, "")
     );
+    formData.append("branch_out", true);
     let subscribe = document.getElementById("subscribe");
     subscribe.style.display = "none";
 
