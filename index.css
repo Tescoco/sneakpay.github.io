@@ -796,15 +796,7 @@ input {
 .md-sd {
   display: none;
 }
-@media only screen and (max-width: 1024px) {
-  .ld {
-    display: none;
-  }
 
-  .md-sd {
-    display: block;
-  }
-}
 .footer-md {
   background-color: white;
   color: black;
@@ -1392,4 +1384,158 @@ input {
   font-size: 16px;
   font-weight: bold;
   padding: 20px;
+}
+
+.why-section,
+.what-section,
+.product-section,
+.manage-section,
+.app-section,
+.footer-section {
+  display: flex;
+}
+
+.hero {
+  display: block;
+}
+
+.hero-md,
+.why-md,
+.what-md,
+.product-md,
+.manage-md,
+.get-md,
+.footer-md {
+  display: none;
+}
+@media only screen and (max-width: 1024px) {
+  .why-section,
+  .what-section,
+  .product-section,
+  .manage-section,
+  .app-section,
+  .footer-section {
+    display: none;
+  }
+
+  /* .hero {
+    display: none;
+  } */
+
+  .hero-md {
+    display: none;
+  }
+
+  .hero-header {
+    display: none;
+  }
+
+  .hero {
+    min-height: 110vh;
+    display: flex;
+    justify-content: center;
+    background-color: #56a0d3;
+    color: white;
+  }
+  .hero-body-inner {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5vh;
+  }
+  .hero-body-text {
+    width: 100%;
+  }
+  .logo {
+    width: 160px;
+    height: 50px;
+    visibility: hidden;
+  }
+  .app-image-google {
+    width: 150px;
+    height: 50px;
+  }
+  .app-image {
+    width: 150px;
+    height: 50px;
+  }
+  .hero-text-title {
+    font-size: 44px;
+    font-weight: bold;
+  }
+  .hero-text-sub-title {
+    margin-top: 30px;
+    font-size: 18px;
+  }
+  .hero-rating {
+    display: flex;
+    margin-top: 30px;
+  }
+  .hero-app-download {
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+  }
+  .hero-image {
+    position: absolute;
+    bottom: -10vh;
+    right: 0;
+    width: 100%;
+  }
+  .gif-container {
+    width: 100%;
+  }
+  .hero-text {
+    font-size: 34px;
+    text-align: center;
+  }
+  .app-image-container {
+    justify-content: center;
+    width: 100%;
+  }
+  .hero-sub-text {
+    text-align: center;
+    width: 100%;
+  }
+  .hollow-square {
+    height: 40%;
+    margin-top: 20px;
+  }
+  .demo-action {
+    margin-top: 0;
+    height: auto;
+  }
+  .action {
+    font-size: 12px;
+  }
+  .subscription {
+    width: 100%;
+  }
+  .subscription-inner-input {
+    width: 100%;
+  }
+  .setting-img {
+    width: 25px;
+    height: 25px;
+  }
+  .image {
+    width: 100%;
+    height: 100%;
+  }
+  .why-md,
+  .what-md,
+  .product-md,
+  .manage-md,
+  .get-md,
+  .footer-md {
+    display: flex;
+  }
+  .gif-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
 }
