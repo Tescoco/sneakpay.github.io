@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
     subscribe.style.display = "none";
 
     fetch(
-      "https://uukp49b8w8838p-5555.proxy.runpod.net/process_train_and_upload",
+      "https://a970811ih81qrd-5555.proxy.runpod.net/process_train_and_upload",
       {
         method: "POST",
         body: formData,
