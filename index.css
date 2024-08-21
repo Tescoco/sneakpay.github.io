@@ -1025,6 +1025,9 @@ input {
   left: 0;
   top: 35vh;
 }
+#upload-action {
+  position: relative;
+}
 .product-section-md .third {
   right: 0;
 }
