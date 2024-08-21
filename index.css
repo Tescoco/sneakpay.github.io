@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 * {
   margin: 0;
   padding: 0;
-  font-family: IBM Plex Sans;
+  font-family: "Quicksand", sans-serif;
 }
 html {
   scroll-behavior: smooth;
@@ -12,7 +13,7 @@ html {
 } */
 .hero {
   background-size: cover;
-  min-height: 100vh;
+  min-height: 90vh;
   background-color: #56a0d3;
   color: white;
 }
@@ -21,7 +22,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #004cb0;
+  /* background-color: #004cb0; */
 }
 /* remove native element for a tag */
 a {
@@ -35,18 +36,20 @@ a {
   width: 95%;
 }
 .hero-header_logo {
-  width: 30%;
+  width: 70%;
   height: 100%;
-  max-width: 200px;
+  max-width: 300px;
   display: flex;
   align-items: center;
+  font-weight: 600;
+  font-size: 28px;
 }
 .logo {
   width: 60%;
   max-width: 150px;
 }
 .hero-header_nav {
-  width: 60%;
+  width: 30%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -130,7 +133,7 @@ a {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  background-color: black;
+  /* background-color: black; */
   padding-bottom: 20px;
 }
 button {
@@ -341,7 +344,9 @@ input {
   color: #007753;
 }
 .hero-text {
-  font-size: 64px;
+  font-size: 60px;
+  white-space: nowrap;
+  margin-bottom: 50px;
 }
 .hero-sub-text {
   width: 80%;
@@ -1538,4 +1543,57 @@ input {
     padding-top: 30px;
     padding-bottom: 30px;
   }
+}
+.hero-use-banner {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #ffcc00;
+  color: white;
+}
+.avatar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  flex-direction: column;
+}
+.avatar__image_main {
+  width: 400px;
+}
+.logo_avatar {
+  padding: 10px;
+}
+.avatar_bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  background-color: #56a0d3;
+  margin-top: 20px;
+  max-width: 650px;
+  border-radius: 20px;
+}
+.avatar_nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.avatar_circle {
+  width: 100px;
+  height: 100px;
+  background-color: #56a0d3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: 20px;
+  color: white;
 }

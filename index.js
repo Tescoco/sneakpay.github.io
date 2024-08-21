@@ -19,12 +19,60 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("video-action").style.display = "none";
           document.getElementById("video").style.display = "block";
           document.getElementById("hollowSquare").style.display = "block";
-          document.getElementById("video-setting").style.display = "flex";
+          // document.getElementById("video-setting").style.display = "flex";
 
           video.srcObject = mediaStream;
           video.onloadedmetadata = function (e) {
             video.play();
           };
+
+          // capture after 2 seconds
+          setTimeout(function () {
+            var video = document.getElementById("video");
+            var image = document.getElementById("image");
+            var canvas = document.createElement("canvas");
+            var send = document.getElementById("send");
+            document.getElementById("hollowSquare").style.display = "none";
+            var send_disable = document.getElementById("send-disable");
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            var image = document.getElementById("image");
+            image.src = canvas.toDataURL("image/png");
+            image.style.display = "block";
+            send.style.display = "block";
+            send_disable.style.display = "none";
+            video.style.display = "none";
+
+            // in 2000 seconds show loading gif and record audio
+            setTimeout(function () {
+              document.getElementById("demo-text").innerHTML =
+                "Allowing a few moments for processing";
+              let previousImage = image.src;
+              image.src = "/img/loading.gif";
+              image.style.display = "block";
+              video.style.display = "none";
+              video.srcObject.getVideoTracks().forEach(function (track) {
+                track.stop();
+              });
+
+              setTimeout(function () {
+                document.getElementById("demo-text").innerHTML =
+                  "Please now record your voice. You can talk about yourself, should be one minute or more.";
+                image.src = previousImage;
+
+                setTimeout(function () {
+                  image.src = "/img/loading.gif";
+                  setTimeout(function () {
+                    var demo = document.getElementById("demo");
+                    demo.style.display = "none";
+                    subscription.style.display = "flex";
+                  }, 4000);
+                }, 4000);
+              }, 4000);
+            }, 4000);
+          }, 4000);
         })
         .catch(function (err) {
           console.log(err.name + ": " + err.message);
@@ -258,7 +306,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Add event listeners to both buttons
-  addEventListenerToElements(["audio-action"], "click", startAudioRecording);
+  // addEventListenerToElements(["audio-action"], "click", startAudioRecording);
   addEventListenerToElements(["subscribe"], "click", upload);
   // addEventListenerToElements(["delete-audio"], "click", deleteAudio);
 
