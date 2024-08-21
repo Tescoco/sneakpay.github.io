@@ -367,6 +367,7 @@ input {
   justify-content: center;
   position: relative;
   padding-bottom: 30px;
+  display: none;
 }
 .why-section-inner {
   width: 95%;
@@ -378,6 +379,7 @@ input {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  display: none;
 }
 .why1-title {
   font-size: 44px;
@@ -422,6 +424,7 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 .why2-card {
   background: #56a0d3;
@@ -488,12 +491,14 @@ input {
   height: 100%;
 }
 .what-section {
+  display: none;
   width: 100%;
   height: 100vh;
   display: flex;
   position: relative;
   background-color: #56a0d3;
   color: white;
+  display: none;
 }
 .what1 {
   width: 50%;
@@ -501,6 +506,7 @@ input {
   align-items: center;
   position: relative;
   flex-direction: column;
+  display: none;
 }
 .what1-img-1 {
   width: 50%;
@@ -523,6 +529,7 @@ input {
   justify-content: center;
   align-items: center;
   display: flex;
+  display: none;
 }
 .what2-inner {
   width: 90%;
@@ -560,6 +567,7 @@ input {
   margin-top: 10px;
 }
 .product-section {
+  display: none;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -569,6 +577,7 @@ input {
   justify-content: center;
   align-items: center;
   position: relative;
+  display: none;
 }
 .product-section-inner {
   width: 95%;
@@ -606,6 +615,7 @@ input {
   justify-content: center;
   align-items: center;
   position: absolute;
+  display: none;
 }
 .psb-inner {
   width: 80%;
@@ -651,6 +661,7 @@ input {
   left: 50%;
 }
 .manage-section {
+  display: none;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -659,6 +670,7 @@ input {
   position: relative;
   background: #56a0d3;
   color: white;
+  display: none;
 }
 .manage-section-inner {
   width: 95%;
@@ -726,6 +738,7 @@ input {
   margin-top: 10px;
 }
 .app-section {
+  display: none;
   width: 100%;
   height: 75vh;
   background-color: #f0eef2;
@@ -758,6 +771,7 @@ input {
   display: flex;
 }
 .footer-section {
+  display: none;
   width: 100%;
   height: 40vh;
   background-color: white;
@@ -808,6 +822,7 @@ input {
   width: 100%;
   display: flex;
   justify-content: center;
+  display: none;
 }
 .footer-inner-md {
   padding-top: 30px;
@@ -839,6 +854,7 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 .get-md-inner {
   width: 90%;
@@ -879,6 +895,7 @@ input {
   justify-content: center;
   position: relative;
   background-color: #56a0d3;
+  display: none;
   color: white;
 }
 .manage-inner-md {
@@ -952,6 +969,7 @@ input {
   justify-content: center;
   min-height: 100vh;
   padding-bottom: 40px;
+  display: none;
 }
 .product-inner-md {
   width: 90%;
@@ -974,6 +992,7 @@ input {
   justify-content: center;
   align-items: center;
   position: absolute;
+  display: none;
 }
 .psb-inner-md {
   width: 85%;
@@ -1066,6 +1085,7 @@ input {
   color: black;
   padding-bottom: 60px;
   position: relative;
+  display: none;
 }
 .why-inner-md {
   width: 90%;
@@ -1398,6 +1418,7 @@ input {
 .app-section,
 .footer-section {
   display: flex;
+  display: none;
 }
 
 .hero {
@@ -1538,6 +1559,7 @@ input {
   .get-md,
   .footer-md {
     display: flex;
+    display: none;
   }
   .gif-container {
     padding-top: 30px;
