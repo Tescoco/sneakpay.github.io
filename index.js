@@ -1,87 +1,101 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // get element by id video when click trigger allow video , hence project the video on  id image
+  function triggerVideoAction() {
+    document.getElementById("demo-text").innerHTML =
+      "Please turn on your camera";
+
+    navigator.mediaDevices
+      .getUserMedia({
+        video: true,
+      })
+      .then(function (mediaStream) {
+        document.getElementById("demo-text").innerHTML =
+          "Recording. Please hold a close-mouthed pose until satisfied. Then click 'stop', 'send', or 'delete' and then 'record'.";
+
+        var video = document.getElementById("video");
+        document.getElementById("image").style.display = "none";
+        document.getElementById("video-action").style.display = "none";
+        document.getElementById("video").style.display = "block";
+        document.getElementById("hollowSquare").style.display = "block";
+
+        video.srcObject = mediaStream;
+        video.onloadedmetadata = function (e) {
+          video.play();
+        };
+
+        // Capture after 2 seconds
+        setTimeout(function () {
+          var canvas = document.createElement("canvas");
+          var send = document.getElementById("send");
+          var send_disable = document.getElementById("send-disable");
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          var image = document.getElementById("image");
+          image.src = canvas.toDataURL("image/png");
+          image.style.display = "block";
+          send.style.display = "block";
+          send_disable.style.display = "none";
+          video.style.display = "none";
+
+          // After 2 seconds, show loading gif and record audio
+          setTimeout(function () {
+            document.getElementById("demo-text").innerHTML =
+              "Allowing a few moments for processing";
+            let previousImage = image.src;
+            image.src = "/img/loading.gif";
+            image.style.display = "block";
+            video.style.display = "none";
+            video.srcObject.getVideoTracks().forEach(function (track) {
+              track.stop();
+            });
+
+            setTimeout(function () {
+              document.getElementById("demo-text").innerHTML =
+                "Please now record your voice. You can talk about yourself, should be one minute or more.";
+              image.src = previousImage;
+
+              setTimeout(function () {
+                image.src = "/img/loading.gif";
+                setTimeout(function () {
+                  var demo = document.getElementById("demo");
+                  demo.style.display = "none";
+                  subscription.style.display = "flex";
+                }, 4000);
+              }, 60000);
+            }, 4000);
+          }, 4000);
+        }, 4000);
+      })
+      .catch(function (err) {
+        console.log(err.name + ": " + err.message);
+      });
+  }
+
+  // Handle image upload and then trigger video action
+  document
+    .getElementById("upload-image")
+    .addEventListener("change", function () {
+      var image = document.getElementById("image");
+      var file = this.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        image.src = e.target.result;
+        triggerVideoAction(); // Trigger video action after image upload
+      };
+
+      reader.readAsDataURL(file);
+    });
+
   document
     .getElementById("video-action")
     .addEventListener("click", function () {
-      document.getElementById("demo-text").innerHTML =
-        "Please turn on your camera on";
-
-      navigator.mediaDevices
-        .getUserMedia({
-          video: true,
-        })
-        .then(function (mediaStream) {
-          document.getElementById("demo-text").innerHTML =
-            "Recording. Please hold close mouthed pose until your satisfaction. Then click 'stop'. Then 'send'. Or 'delete'. Then 'record'.";
-
-          var video = document.getElementById("video");
-          document.getElementById("image").style.display = "none";
-          document.getElementById("video-action").style.display = "none";
-          document.getElementById("video").style.display = "block";
-          document.getElementById("hollowSquare").style.display = "block";
-          // document.getElementById("video-setting").style.display = "flex";
-
-          video.srcObject = mediaStream;
-          video.onloadedmetadata = function (e) {
-            video.play();
-          };
-
-          // capture after 2 seconds
-          setTimeout(function () {
-            var video = document.getElementById("video");
-            var image = document.getElementById("image");
-            var canvas = document.createElement("canvas");
-            var send = document.getElementById("send");
-            document.getElementById("hollowSquare").style.display = "none";
-            var send_disable = document.getElementById("send-disable");
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            var ctx = canvas.getContext("2d");
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            var image = document.getElementById("image");
-            image.src = canvas.toDataURL("image/png");
-            image.style.display = "block";
-            send.style.display = "block";
-            send_disable.style.display = "none";
-            video.style.display = "none";
-
-            // in 2000 seconds show loading gif and record audio
-            setTimeout(function () {
-              document.getElementById("demo-text").innerHTML =
-                "Allowing a few moments for processing";
-              let previousImage = image.src;
-              image.src = "/img/loading.gif";
-              image.style.display = "block";
-              video.style.display = "none";
-              video.srcObject.getVideoTracks().forEach(function (track) {
-                track.stop();
-              });
-
-              setTimeout(function () {
-                document.getElementById("demo-text").innerHTML =
-                  "Please now record your voice. You can talk about yourself, should be one minute or more.";
-                image.src = previousImage;
-
-                setTimeout(function () {
-                  image.src = "/img/loading.gif";
-                  setTimeout(function () {
-                    var demo = document.getElementById("demo");
-                    demo.style.display = "none";
-                    subscription.style.display = "flex";
-                  }, 4000);
-                }, 4000);
-              }, 4000);
-            }, 4000);
-          }, 4000);
-        })
-        .catch(function (err) {
-          console.log(err.name + ": " + err.message);
-        });
+      triggerVideoAction(); // Trigger video action when the button is clicked
     });
 
   document.getElementById("capture").addEventListener("click", function () {
     var video = document.getElementById("video");
-    var image = document.getElementById("image");
     var canvas = document.createElement("canvas");
     var send = document.getElementById("send");
     var send_disable = document.getElementById("send-disable");
@@ -97,21 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
     video.style.display = "none";
   });
 
-  // document.getElementById("stop").addEventListener("click", function () {
-  //   var video = document.getElementById("video");
-  //   var image = document.getElementById("image");
-  //   document.getElementById("video-action").style.display = "flex";
-  //   document.getElementById("video-setting").style.display = "none";
-  //   document.getElementById("demo-text").innerHTML =
-  //     "Click on Capture Selfie to start";
-  //   image.src = "/img/loading.gif";
-  //   image.style.display = "block";
-  //   video.style.display = "none";
-  //   video.srcObject.getVideoTracks().forEach(function (track) {
-  //     track.stop();
-  //   });
-  // });
-
   document.getElementById("delete").addEventListener("click", function () {
     var image = document.getElementById("image");
     var video = document.getElementById("video");
@@ -126,7 +125,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("send").addEventListener("click", function () {
     var video = document.getElementById("video");
     var image = document.getElementById("image");
-    var hollowSquare = document.getElementById("hollowSquare");
     var hollowSquare = document.getElementById("hollowSquare");
     var audioDisabled = document.getElementById("audio-action-diabled");
     var videoDisabled = document.getElementById("video-action-disabled");
@@ -161,13 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000);
   });
 
-  function addEventListenerToElements(ids, event, handler) {
-    ids.forEach(function (id) {
-      document.getElementById(id).addEventListener(event, handler);
-    });
-  }
-
-  // Event handler for starting the audio recording
+  // Audio recording event handlers
   function startAudioRecording() {
     navigator.mediaDevices
       .getUserMedia({
@@ -180,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("stop-audio-loading").style.display = "block";
         document.getElementById("stop-audio").style.display = "none";
 
-        // Create an AudioContext and connect the mediaStream to it
         var mediaRecorder = new MediaRecorder(mediaStream);
         var audioChunks = [];
 
@@ -192,16 +183,11 @@ document.addEventListener("DOMContentLoaded", function () {
           var audioUrl = URL.createObjectURL(audioBlob);
           audio.src = audioUrl;
 
-          // Stop the mediaStream to prevent feedback
           mediaStream.getTracks().forEach(function (track) {
             track.stop();
           });
-
-          // Close the audio context
-          audioContext.close();
         };
 
-        // Start recording
         mediaRecorder.start();
 
         document
@@ -211,7 +197,6 @@ document.addEventListener("DOMContentLoaded", function () {
               "none";
             document.getElementById("stop-audio").style.display = "block";
             mediaRecorder.stop();
-            mediaRecorder.stop();
           });
       })
       .catch(function (err) {
@@ -219,28 +204,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Event handler for deleting the audio
   function deleteAudio() {
     var audio = document.getElementById("audio");
     audio.src = "/default.mp3";
   }
 
-  // if (image.src.indexOf("loading.gif") > -1) {
-  //   alert("No image to send");
-  //   return;
-  // } else if (audio.src.indexOf("default.mp3") > -1) {
-  //   alert("No audio to send");
-  //   return;
-  // } else if (text.value === "") {
-  //   alert("No text to send");
-  //   return;
-  // } else if (email.value === "" || email.value.indexOf("@") === -1) {
-  //   alert("Invalid email");
-  //   return;
-  // }
-
   async function upload() {
-    // pick image, audio , text from id text , email from id email
     var image = document.getElementById("image");
     var audio = document.getElementById("audio");
     var name = document.getElementById("name");
@@ -266,117 +235,42 @@ document.addEventListener("DOMContentLoaded", function () {
     var imageBlob = await fetch(image.src).then((r) => r.blob());
 
     var audioBlob = await fetch(audio.src).then((r) => r.blob());
-    formData.append("image", imageBlob, "image.jpg");
-    formData.append("audio_file", audioBlob, "audio.mp3");
-    formData.append(
-      "data_name",
-      name.value.replace(/\s/g, "_").replace(/[^a-zA-Z]/g, "")
-    );
-    formData.append("branch_out", true);
-    let subscribe = document.getElementById("subscribe");
-    subscribe.style.display = "none";
 
-    fetch(
-      "https://a970811ih81qrd-5555.proxy.runpod.net/process_train_and_upload",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-
-    setTimeout(() => {
-      let subscription = document.getElementById("subscription");
-      let success = document.getElementById("success");
-      subscription.style.display = "none";
-      success.style.display = "block";
-    }, 2000);
-    // .then(function (response) {
-    //   return response.json();
-    // })
-    // .then(function (data) {
-    //   console.log(data);
-
-    // if (data.success) {
-
-    //   }
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
-  }
-
-  // Add event listeners to both buttons
-  // addEventListenerToElements(["audio-action"], "click", startAudioRecording);
-  addEventListenerToElements(["subscribe"], "click", upload);
-  // addEventListenerToElements(["delete-audio"], "click", deleteAudio);
-
-  document.getElementById("stop-audio").addEventListener("click", function () {
-    var audio = document.getElementById("audio");
-    document.getElementById("audio-action").style.display = "flex";
-    document.getElementById("audio-setting").style.display = "none";
-    //  mediaRecorder.stop();
-    audio.srcObject.getAudioTracks().forEach(function (track) {
-      track.stop();
-    });
-  });
-
-  document.getElementById("send-audio").addEventListener("click", function () {
-    var audio = document.getElementById("audio");
-    var image_audio = document.getElementById("image-audio");
-    var image = document.getElementById("image");
-    var audio_setting = document.getElementById("audio-setting");
-    var audio_action_diabled = document.getElementById("audio-action-diabled");
-    var demo = document.getElementById("demo");
-    var subscription = document.getElementById("subscription");
-    if (audio.src.indexOf("default.mp3") > -1) {
-      alert("No audio to send");
-      return;
-    }
+    formData.append("image", imageBlob);
+    formData.append("audio", audioBlob);
 
     document.getElementById("demo-text").innerHTML =
       "Allowing a few moments for processing";
+    image.src = "/img/loading.gif";
 
-    image_audio.src = "/img/loading.gif";
-    image_audio.style.display = "block";
-    image.style.display = "none";
-    audio_setting.style.display = "none";
-    audio_action_diabled.style.display = "flex";
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "upload.php", true);
 
-    setTimeout(function () {
-      // document.getElementById("demo-text").innerHTML =
-      //   "Processing completes. Here is YOO";
-      // image_audio.src = "/img/loading.gif";
-      demo.style.display = "none";
-      subscription.style.display = "flex";
-    }, 2000);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        document.getElementById("demo-text").innerHTML =
+          "Thank you. Submission received.";
+        image.style.display = "none";
+        audio.style.display = "none";
+      } else if (xhr.readyState == 4 && xhr.status != 200) {
+        alert("Submission failed");
+      }
+    };
+
+    xhr.send(formData);
+  }
+
+  document
+    .getElementById("audio-action")
+    .addEventListener("click", startAudioRecording);
+
+  document
+    .getElementById("delete-audio")
+    .addEventListener("click", function () {
+      deleteAudio();
+    });
+
+  document.getElementById("upload").addEventListener("click", function () {
+    upload();
   });
-
-  // document
-  //   .getElementById("delete-audio")
-  //   .addEventListener("click", function () {
-  //     var audio = document.getElementById("audio");
-  //     audio.src = "/default.mp3";
-
-  //     // restart recording
-  //   });
-
-  // play audio
-  document.getElementById("play-audio").addEventListener("click", function () {
-    var audio = document.getElementById("audio");
-    audio.play();
-  });
-
-  //   capture audio
-  // document
-  //   .getElementById("capture-audio")
-  //   .addEventListener("click", function () {
-  //     mediaRecorder.stop();
-  //   });
-
-  // document
-  //   .getElementById("delete-audio")
-  //   .addEventListener("click", function () {
-  //     var audioCapture = document.getElementById("audio-capture");
-  //     audioCapture.style.display = "none";
-  //   });
 });
