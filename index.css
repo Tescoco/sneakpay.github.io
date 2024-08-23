@@ -80,7 +80,7 @@ a {
   width: 45%;
 }
 .gif-container {
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1622,4 +1622,12 @@ input {
   margin-top: 20px;
   margin-right: 20px;
   color: white;
+}
+.countdown {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-weight: bold;
 }

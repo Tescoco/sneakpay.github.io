@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var video = document.getElementById("video");
         document.getElementById("image").style.display = "none";
         document.getElementById("video-action").style.display = "none";
+        document.getElementById("upload-action").style.display = "none";
         document.getElementById("video").style.display = "block";
         document.getElementById("hollowSquare").style.display = "block";
 
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
           send.style.display = "block";
           send_disable.style.display = "none";
           video.style.display = "none";
+          document.getElementById("hollowSquare").style.display = "none";
 
           // After 2 seconds, show loading gif and record audio
           setTimeout(function () {
@@ -53,16 +55,41 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(function () {
               document.getElementById("demo-text").innerHTML =
                 "Please now record your voice. You can talk about yourself, should be one minute or more.";
-              image.src = previousImage;
+              document.getElementById("countdown").style.display = "flex";
 
-              setTimeout(function () {
-                image.src = "/img/loading.gif";
-                setTimeout(function () {
-                  var demo = document.getElementById("demo");
-                  demo.style.display = "none";
-                  subscription.style.display = "flex";
-                }, 4000);
-              }, 60000);
+              var countdown = document.getElementById("countdown");
+              var minutes = 1;
+              var seconds = 0;
+
+              function updateCountdown() {
+                countdown.innerHTML =
+                  formatTime(minutes) + ":" + formatTime(seconds);
+                if (minutes === 0 && seconds === 0) {
+                  image.src = "/img/loading.gif";
+                  setTimeout(function () {
+                    var demo = document.getElementById("demo");
+                    demo.style.display = "none";
+                    subscription.style.display = "flex";
+                  }, 4000);
+                  return;
+                }
+                if (seconds === 0) {
+                  minutes--;
+                  seconds = 59;
+                  // seconds = 59;
+                } else {
+                  seconds--;
+                }
+                setTimeout(updateCountdown, 1000);
+              }
+
+              function formatTime(time) {
+                return time < 10 ? "0" + time : time;
+              }
+
+              updateCountdown();
+
+              image.src = previousImage;
             }, 4000);
           }, 4000);
         }, 4000);
@@ -70,6 +97,58 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(function (err) {
         console.log(err.name + ": " + err.message);
       });
+  }
+
+  function triggerUploadAction() {
+    document.getElementById("video-action").style.display = "none";
+    document.getElementById("upload-action").style.display = "none";
+
+    setTimeout(function () {
+      var image = document.getElementById("image");
+
+      document.getElementById("demo-text").innerHTML =
+        "Allowing a few moments for processing";
+      let previousImage = image.src;
+      image.src = "/img/loading.gif";
+      image.style.display = "block";
+
+      setTimeout(function () {
+        document.getElementById("demo-text").innerHTML =
+          "Please now record your voice. You can talk about yourself, should be one minute or more.";
+        document.getElementById("countdown").style.display = "flex";
+
+        image.src = previousImage;
+        var countdown = document.getElementById("countdown");
+        var minutes = 1;
+        var seconds = 0;
+
+        function updateCountdown() {
+          countdown.innerHTML = formatTime(minutes) + ":" + formatTime(seconds);
+          if (minutes === 0 && seconds === 0) {
+            image.src = "/img/loading.gif";
+            setTimeout(function () {
+              var demo = document.getElementById("demo");
+              demo.style.display = "none";
+              subscription.style.display = "flex";
+            }, 4000);
+            return;
+          }
+          if (seconds === 0) {
+            minutes--;
+            seconds = 59;
+          } else {
+            seconds--;
+          }
+          setTimeout(updateCountdown, 1000);
+        }
+
+        function formatTime(time) {
+          return time < 10 ? "0" + time : time;
+        }
+
+        updateCountdown();
+      }, 4000);
+    }, 4000);
   }
 
   // Handle image upload and then trigger video action
@@ -82,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       reader.onload = function (e) {
         image.src = e.target.result;
-        triggerVideoAction(); // Trigger video action after image upload
+        triggerUploadAction();
       };
 
       reader.readAsDataURL(file);
