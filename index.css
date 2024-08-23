@@ -46,7 +46,7 @@ a {
 }
 .logo {
   width: 60%;
-  max-width: 150px;
+  max-width: 180px;
 }
 .hero-header_nav {
   width: 30%;
@@ -1576,7 +1576,8 @@ input {
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: #ffcc00;
+  /* background-color: #ffcc00; */
+  background-color: white;
   color: white;
 }
 .avatar {
