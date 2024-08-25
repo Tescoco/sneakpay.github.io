@@ -57,6 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Please now record your voice. You can talk about yourself, should be one minute or more.";
               document.getElementById("countdown").style.display = "flex";
 
+              startAudioRecording();
+
               var countdown = document.getElementById("countdown");
               var minutes = 1;
               var seconds = 0;
@@ -76,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (seconds === 0) {
                   minutes--;
                   seconds = 59;
-                  // seconds = 59;
                 } else {
                   seconds--;
                 }
@@ -133,13 +134,11 @@ document.addEventListener("DOMContentLoaded", function () {
               demo.style.display = "none";
               subscription.style.display = "flex";
               image.src = previousImage;
-              // console.log("done", image.src);
             }, 4000);
             return;
           }
           if (seconds === 0) {
             minutes--;
-            // seconds = 1;
             seconds = 59;
           } else {
             seconds--;
