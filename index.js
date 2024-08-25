@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     var demo = document.getElementById("demo");
                     demo.style.display = "none";
                     subscription.style.display = "flex";
+                    image.src = previousImage;
                   }, 4000);
                   return;
                 }
