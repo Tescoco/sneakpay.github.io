@@ -134,13 +134,13 @@ document.addEventListener("DOMContentLoaded", function () {
               subscription.style.display = "flex";
               image.src = previousImage;
               // console.log("done", image.src);
-            }, 1000);
+            }, 4000);
             return;
           }
           if (seconds === 0) {
             minutes--;
-            seconds = 1;
-            // seconds = 59;
+            // seconds = 1;
+            seconds = 59;
           } else {
             seconds--;
           }
@@ -152,8 +152,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         updateCountdown();
-      }, 1000);
-    }, 1000);
+      }, 4000);
+    }, 4000);
   }
 
   // Handle image upload and then trigger video action
@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () {
           mediaRecorder.stop();
           console.log("Recording stopped");
-        }, 1000);
+        }, 60000);
       })
       .catch(function (err) {
         console.log(err.name + ": " + err.message);
