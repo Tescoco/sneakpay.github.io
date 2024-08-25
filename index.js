@@ -117,6 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
           "Please now record your voice. You can talk about yourself, should be one minute or more.";
         document.getElementById("countdown").style.display = "flex";
 
+        startAudioRecording();
+
         image.src = previousImage;
         var countdown = document.getElementById("countdown");
         var minutes = 1;
@@ -130,12 +132,15 @@ document.addEventListener("DOMContentLoaded", function () {
               var demo = document.getElementById("demo");
               demo.style.display = "none";
               subscription.style.display = "flex";
-            }, 4000);
+              image.src = previousImage;
+              // console.log("done", image.src);
+            }, 1000);
             return;
           }
           if (seconds === 0) {
             minutes--;
-            seconds = 59;
+            seconds = 1;
+            // seconds = 59;
           } else {
             seconds--;
           }
@@ -147,8 +152,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         updateCountdown();
-      }, 4000);
-    }, 4000);
+      }, 1000);
+    }, 1000);
   }
 
   // Handle image upload and then trigger video action
@@ -246,10 +251,6 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then(function (mediaStream) {
         var audio = document.getElementById("audio");
-        document.getElementById("audio-action").style.display = "none";
-        document.getElementById("audio-setting").style.display = "flex";
-        document.getElementById("stop-audio-loading").style.display = "block";
-        document.getElementById("stop-audio").style.display = "none";
 
         var mediaRecorder = new MediaRecorder(mediaStream);
         var audioChunks = [];
@@ -269,23 +270,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         mediaRecorder.start();
 
-        document
-          .getElementById("capture-audio")
-          .addEventListener("click", function () {
-            document.getElementById("stop-audio-loading").style.display =
-              "none";
-            document.getElementById("stop-audio").style.display = "block";
-            mediaRecorder.stop();
-          });
+        // Stop recording after 1 minute
+        setTimeout(function () {
+          mediaRecorder.stop();
+          console.log("Recording stopped");
+        }, 1000);
       })
       .catch(function (err) {
         console.log(err.name + ": " + err.message);
       });
-  }
-
-  function deleteAudio() {
-    var audio = document.getElementById("audio");
-    audio.src = "/default.mp3";
   }
 
   async function upload() {
@@ -311,45 +304,40 @@ document.addEventListener("DOMContentLoaded", function () {
     var formData = new FormData();
     formData.append("name", name.value);
     formData.append("email", email.value);
-    var imageBlob = await fetch(image.src).then((r) => r.blob());
 
+    // Convert image and audio URLs to Blob objects
+    var imageBlob = await fetch(image.src).then((r) => r.blob());
     var audioBlob = await fetch(audio.src).then((r) => r.blob());
 
-    formData.append("image", imageBlob);
-    formData.append("audio", audioBlob);
+    // Append the Blobs to the FormData
+    formData.append("image", imageBlob, "image.jpg");
+    formData.append("audio", audioBlob, "audio.mp3");
 
     document.getElementById("demo-text").innerHTML =
       "Allowing a few moments for processing";
     image.src = "/img/loading.gif";
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "upload.php", true);
+    try {
+      let response = await fetch(
+        "https://ntgnx4sm-3000.euw.devtunnels.ms/v1/friend/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        document.getElementById("demo-text").innerHTML =
-          "Thank you. Submission received.";
-        image.style.display = "none";
-        audio.style.display = "none";
-      } else if (xhr.readyState == 4 && xhr.status != 200) {
+      if (response.ok) {
+        alert("Submission received");
+        location.reload();
+      } else {
         alert("Submission failed");
       }
-    };
-
-    xhr.send(formData);
+    } catch (error) {
+      alert("Submission failed");
+      console.error(error);
+    }
   }
-
-  document
-    .getElementById("audio-action")
-    .addEventListener("click", startAudioRecording);
-
-  document
-    .getElementById("delete-audio")
-    .addEventListener("click", function () {
-      deleteAudio();
-    });
-
-  document.getElementById("upload").addEventListener("click", function () {
+  document.getElementById("subscribe").addEventListener("click", function () {
     upload();
   });
 });

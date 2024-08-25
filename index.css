@@ -147,6 +147,7 @@ button {
   margin-top: 20px;
 }
 .subscription {
+  max-width: 500px;
   background-color: #004cb0;
   width: 70%;
   border-radius: 20px;
