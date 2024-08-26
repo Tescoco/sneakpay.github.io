@@ -178,71 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
       triggerVideoAction(); // Trigger video action when the button is clicked
     });
 
-  document.getElementById("capture").addEventListener("click", function () {
-    var video = document.getElementById("video");
-    var canvas = document.createElement("canvas");
-    var send = document.getElementById("send");
-    var send_disable = document.getElementById("send-disable");
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    var image = document.getElementById("image");
-    image.src = canvas.toDataURL("image/png");
-    image.style.display = "block";
-    send.style.display = "block";
-    send_disable.style.display = "none";
-    video.style.display = "none";
-  });
-
-  document.getElementById("delete").addEventListener("click", function () {
-    var image = document.getElementById("image");
-    var video = document.getElementById("video");
-    var send = document.getElementById("send");
-    var send_disable = document.getElementById("send-disable");
-    image.style.display = "none";
-    video.style.display = "block";
-    send.style.display = "none";
-    send_disable.style.display = "block";
-  });
-
-  document.getElementById("send").addEventListener("click", function () {
-    var video = document.getElementById("video");
-    var image = document.getElementById("image");
-    var hollowSquare = document.getElementById("hollowSquare");
-    var audioDisabled = document.getElementById("audio-action-diabled");
-    var videoDisabled = document.getElementById("video-action-disabled");
-    var videoAction = document.getElementById("video-action");
-    var audioAction = document.getElementById("audio-action");
-    var videoSetting = document.getElementById("video-setting");
-
-    if (image.src.indexOf("loading.gif") > -1) {
-      alert("No image to send");
-      return;
-    }
-    document.getElementById("demo-text").innerHTML =
-      "Allowing a few moments for processing";
-    let previousImage = image.src;
-    image.src = "/img/loading.gif";
-    image.style.display = "block";
-    video.style.display = "none";
-    videoAction.style.display = "none";
-    hollowSquare.style.display = "none";
-    videoDisabled.style.display = "flex";
-    videoSetting.style.display = "none";
-    video.srcObject.getVideoTracks().forEach(function (track) {
-      track.stop();
-    });
-
-    setTimeout(function () {
-      document.getElementById("demo-text").innerHTML =
-        "Please now record your voice. You can talk about yourself, should be one minute or more.";
-      audioDisabled.style.display = "none";
-      audioAction.style.display = "flex";
-      image.src = previousImage;
-    }, 2000);
-  });
-
   // Audio recording event handlers
   function startAudioRecording() {
     navigator.mediaDevices
@@ -287,13 +222,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var name = document.getElementById("name");
     var email = document.getElementById("email");
 
-    if (image.src.indexOf("loading.gif") > -1) {
-      alert("No image to send");
-      return;
-    } else if (audio.src.indexOf("default.mp3") > -1) {
-      alert("No audio to send");
-      return;
-    } else if (name.value === "") {
+    // if (image.src.indexOf("loading.gif") > -1) {
+    //   alert("No image to send");
+    //   return;
+    // }
+    //  if (audio.src.indexOf("default.mp3") > -1) {
+    //   alert("No audio to send");
+    //   return;
+    // }
+    if (name.value === "") {
       alert("No text to send");
       return;
     } else if (email.value === "" || email.value.indexOf("@") === -1) {
