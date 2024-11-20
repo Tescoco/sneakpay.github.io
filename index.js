@@ -67,18 +67,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 countdown.innerHTML =
                   formatTime(minutes) + ":" + formatTime(seconds);
                 if (minutes === 0 && seconds === 0) {
-                  image.src = "/img/loading.gif";
-                  setTimeout(function () {
-                    var demo = document.getElementById("demo");
-                    demo.style.display = "none";
-                    subscription.style.display = "flex";
-                    image.src = previousImage;
-                  }, 4000);
+                  // image.src = "/img/loading.gif";
+                  // setTimeout(function () {
+                  //   var demo = document.getElementById("demo");
+                  //   demo.style.display = "none";
+                  //   subscription.style.display = "flex";
+                  //   image.src = previousImage;
+                  // }, 4000);
+                  upload();
+                  // console.log("upload");
                   return;
                 }
                 if (seconds === 0) {
                   minutes--;
                   seconds = 59;
+                  // seconds = 2;
                 } else {
                   seconds--;
                 }
@@ -129,17 +132,19 @@ document.addEventListener("DOMContentLoaded", function () {
         function updateCountdown() {
           countdown.innerHTML = formatTime(minutes) + ":" + formatTime(seconds);
           if (minutes === 0 && seconds === 0) {
-            image.src = "/img/loading.gif";
-            setTimeout(function () {
-              var demo = document.getElementById("demo");
-              demo.style.display = "none";
-              subscription.style.display = "flex";
-              image.src = previousImage;
-            }, 4000);
+            // image.src = "/img/loading.gif";
+            // setTimeout(function () {
+            //   var demo = document.getElementById("demo");
+            //   demo.style.display = "none";
+            //   subscription.style.display = "flex";
+            //   image.src = previousImage;
+            // }, 4000);
+            upload();
             return;
           }
           if (seconds === 0) {
             minutes--;
+            // seconds = 2;
             seconds = 59;
           } else {
             seconds--;
@@ -219,8 +224,8 @@ document.addEventListener("DOMContentLoaded", function () {
   async function upload() {
     var image = document.getElementById("image");
     var audio = document.getElementById("audio");
-    var name = document.getElementById("name");
-    var email = document.getElementById("email");
+    // var name = document.getElementById("name");
+    // var email = document.getElementById("email");
 
     // if (image.src.indexOf("loading.gif") > -1) {
     //   alert("No image to send");
@@ -230,17 +235,17 @@ document.addEventListener("DOMContentLoaded", function () {
     //   alert("No audio to send");
     //   return;
     // }
-    if (name.value === "") {
-      alert("No text to send");
-      return;
-    } else if (email.value === "" || email.value.indexOf("@") === -1) {
-      alert("Invalid email");
-      return;
-    }
+    // if (name.value === "") {
+    //   alert("No text to send");
+    //   return;
+    // } else if (email.value === "" || email.value.indexOf("@") === -1) {
+    //   alert("Invalid email");
+    //   return;
+    // }
 
     var formData = new FormData();
-    formData.append("name", name.value);
-    formData.append("email", email.value);
+    // formData.append("name", name.value);
+    // formData.append("email", email.value);
 
     // Convert image and audio URLs to Blob objects
     var imageBlob = await fetch(image.src).then((r) => r.blob());
@@ -256,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       let response = await fetch(
-        "https://ntgnx4sm-3000.euw.devtunnels.ms/v1/friend/upload",
+        " https://465c-197-211-59-84.ngrok-free.app/v1/friend/upload",
         {
           method: "POST",
           body: formData,
@@ -264,8 +269,12 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
       if (response.ok) {
-        alert("Submission received");
-        location.reload();
+        // alert("Submission received");
+        // location.reload();
+        console.log(response);
+        let data = await response.json();
+        window.location.href =
+          "/avatar.html?url=" + encodeURIComponent(data.payload.url);
       } else {
         alert("Submission failed");
       }
@@ -274,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error(error);
     }
   }
-  document.getElementById("subscribe").addEventListener("click", function () {
-    upload();
-  });
+  // document.getElementById("subscribe").addEventListener("click", function () {
+  //   upload();
+  // });
 });

@@ -1,25 +1,17 @@
 window.addEventListener("load", function () {
   const urlParams = new URLSearchParams(window.location.search);
-  const webhookId = urlParams.get("webhook_id");
+  const webhookId = urlParams.get("url");
 
-  fetch(
-    `https://ntgnx4sm-3000.euw.devtunnels.ms/v1/friend/webhook/${webhookId}`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data.payload.webhook.data);
+  // url is currently been encoded
+  let url = decodeURIComponent(webhookId);
 
-      let { url } = JSON.parse(data.payload.webhook.data);
+  console.log(url);
 
-      const avatar = document.getElementById("avatar");
-      console.log(avatar);
-      avatar.src = url;
-      avatar.alt = webhookId;
-      avatar.style.display = "block";
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  const avatar = document.getElementById("avatar");
+  console.log(avatar);
+  avatar.src = url;
+  avatar.alt = "webhookId";
+  avatar.style.display = "block";
 
   console.log(webhookId);
 });
