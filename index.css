@@ -5,6 +5,9 @@
   padding: 0;
   font-family: "Quicksand", sans-serif;
 }
+body {
+  background-color: #56a0d3;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -13,7 +16,7 @@ html {
 } */
 .hero {
   background-size: cover;
-  min-height: 90vh;
+  min-height: 100vh;
   background-color: #56a0d3;
   color: white;
 }
