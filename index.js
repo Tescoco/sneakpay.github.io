@@ -74,8 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
                   //   subscription.style.display = "flex";
                   //   image.src = previousImage;
                   // }, 4000);
-                  upload();
-                  // console.log("upload");
+                  // upload();
+                  console.log("upload");
                   return;
                 }
                 if (seconds === 0) {
@@ -139,12 +139,13 @@ document.addEventListener("DOMContentLoaded", function () {
             //   subscription.style.display = "flex";
             //   image.src = previousImage;
             // }, 4000);
+            console.log("upload");
             upload();
             return;
           }
           if (seconds === 0) {
             minutes--;
-            // seconds = 2;
+            // seconds = 10;
             seconds = 59;
           } else {
             seconds--;
@@ -214,7 +215,8 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () {
           mediaRecorder.stop();
           console.log("Recording stopped");
-        }, 60000);
+          // }, 9000);
+        }, 57000);
       })
       .catch(function (err) {
         console.log(err.name + ": " + err.message);
@@ -250,6 +252,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Convert image and audio URLs to Blob objects
     var imageBlob = await fetch(image.src).then((r) => r.blob());
     var audioBlob = await fetch(audio.src).then((r) => r.blob());
+
+    console.log(audioBlob);
 
     // Append the Blobs to the FormData
     formData.append("image", imageBlob, "image.jpg");
